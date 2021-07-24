@@ -27,6 +27,7 @@
 const { required } = require('@hapi/joi');
 const express = require('express');
 const app = express();
+const path = require('path')
 const http = require('http')
 require('dotenv').config();  //to check for environmental variables
 // const {port} = require("./config");  // -3
