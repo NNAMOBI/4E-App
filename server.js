@@ -30,7 +30,7 @@ const app = express();
 const http = require('http')
 require('dotenv').config();  //to check for environmental variables
 // const {port} = require("./config");  // -3
-const port = process.env.PORT
+const port = process.env.PORT || 4000
 const createError = require('http-errors');  // -4
 // require('express-async-errors');
 const cors = require('cors');  //-7
