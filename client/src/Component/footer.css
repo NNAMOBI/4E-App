@@ -1,0 +1,11 @@
+
+.page-footer  {
+    margin: auto;
+    padding: 80px;
+    background-color: #350654;
+    color: #ffffff;
+}
+
+a.list-unstyled {
+    color: white;
+}

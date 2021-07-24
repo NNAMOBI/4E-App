@@ -1,0 +1,30 @@
+
+
+.container {
+    margin:  auto;
+    /* height: 200px; */
+}
+
+h1 {
+    font-family: sans-serif;
+    font-weight: 600;
+    font-style:normal;
+    font-size: 30px;
+    line-height: 45px;
+    line-height: 100%;
+    align-items: center;
+
+}
+
+.details {
+    font-family: sans-serif;
+    font-size: 14px;
+    text-align: left;
+    color: #350654;
+    padding-left: 40px;
+}
+
+#signup {
+    background: #ffffff;
+    
+}

@@ -1,0 +1,38 @@
+
+
+#horizontal {
+    color: #350564;
+    /* border: 1px solid red; */
+    margin: 10% auto;
+    width: fit-content;
+    
+}
+
+.form-check {
+    /* border: 1px solid red; */
+    color: #350564;
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    line-height: 160%;
+    font-style: medium;
+ }
+ /* #exampleRadios1 {
+   background-color: red !important;
+ }
+
+ .form-check .form-check-input {
+    color: red !important;
+ } */
+
+ .title-question {
+     color: #350564;
+     font-weight:bold;
+     font-style:  normal;
+     font-family: sans-serif;
+     font-size: 24px;
+     line-height: 38px;
+     line-height: 160%;
+     text-align: center;
+
+ }

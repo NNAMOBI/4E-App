@@ -1,0 +1,16 @@
+ 
+
+
+ .jumbotron  {
+    position: relative;
+    /* bottom: 40px;  */
+     /* margin: 5% auto; */
+ }
+
+ .write-up {
+     color: #350564;
+ }
+
+ span {
+     font-weight: 600;
+ }

@@ -1,0 +1,39 @@
+
+.jumbotron-fluid {
+margin: auto;
+}
+
+
+.define {
+    color: #350564;
+    font-family: sans-serif;
+    font-weight:normal;
+    font-size: 16px;
+    text-align: center;
+    line-height: 160%;
+    line-height: 26px;
+    width: 80%;
+    margin: 2% auto;
+}
+
+.question {
+    margin: 2% auto;
+    color: #350564;
+    text-align: center;
+}
+
+/* .app-define {
+    position: absolute;
+    bottom: 200px;
+    background: #350564;
+    margin: 10% auto;
+    color: #ffffff;
+    padding-top: 30px;
+    /* padding-bottom: 60px; */
+    /* padding-right: 80px;
+    padding-left: 80px;
+    text-align: center;
+    display: block;
+    text-align: center; */
+    
+/* }  */

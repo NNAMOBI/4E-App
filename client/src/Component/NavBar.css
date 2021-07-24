@@ -1,0 +1,37 @@
+
+/* register buttons style */
+.btn-default {
+    background-color: #871CF2;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 500;
+    
+}
+.nav-link:hover {
+    background-color: #871CF2;
+    color: #ffffff !important;
+    
+     
+    }
+
+.menu-item-963:active {
+
+}
+/* 4E styling */
+#logo {
+    position: relative;
+    color: #871CF2;
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 31px;
+    line-height: 46px;
+    right: 20px;
+    
+    
+}
+/* all nav bar links style */
+.menu-item-40, .menu-item-42, .menu-item-963 {
+   font-size: 13px;
+   font-weight: 500;
+}

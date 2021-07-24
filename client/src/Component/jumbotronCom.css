@@ -1,0 +1,20 @@
+
+
+.display-6  {
+    font-family: sans-serif;
+    color: #350564;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 110%;
+
+}
+
+.lead {
+    font-size: 14px;
+    font-style: normal;
+    font-family: sans-serif;
+    font-weight: normal;
+    line-height: 160%;
+    color: #350564;
+}
