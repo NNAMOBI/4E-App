@@ -31,7 +31,7 @@ const path = require('path')
 const http = require('http')
 require('dotenv').config();  //to check for environmental variables
 // const {port} = require("./config");  // -3
-const port = process.env.PORT || 4000
+const port = process.env.PORT 
 const createError = require('http-errors');  // -4
 // require('express-async-errors');
 const cors = require('cors');  //-7
@@ -48,12 +48,12 @@ app.use(cors());   //-7
 app.use(express.json());   //4
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser()); //9
-app.use(express.static(path.join(__dirname, 'client/build'))); //serving static files
+// app.use(express.static(path.join(__dirname, 'client/build'))); //serving static files
 
 
-app.get('/*', (req, res)=>{
-res.sendFile(path.join(__dirname, 'client/build', 'index.html')) //handle react routing, return all request to React app
-})
+// app.get('/*', (req, res)=>{
+// res.sendFile(path.join(__dirname, 'client/build', 'index.html')) //handle react routing, return all request to React app
+//  })
 // catch 404 and forward to error handler
 // app.use(function (req, res, next) {
 //     next(createError(404));
