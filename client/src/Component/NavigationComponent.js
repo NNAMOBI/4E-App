@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'; // to use the provider and consumer 
-import {Redirect} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import './NavBar.css';
 import { Link } from 'react-router-dom'  // react library to handle the page navigation
 import AuthService from '../Services/AuthService';  // our interface to all the CRUD operations
@@ -7,11 +7,11 @@ import { AuthContext } from '../ContextApi/AuthContext'; // framework for provid
 
 
   
-  export default function NavigationComponent() {
+  export default function NavigationComponent(props) {
     const {isAuthenticated, user, setAuthenticated, setUser} = useContext(AuthContext); //global data
-    
+    let history = useHistory(); // call a function that routes
     //function to handle logout
-    const logoutHandler = (props)=> {
+    const logoutHandler = ()=> {
       console.log("i am about to use the authservice logout")
       AuthService.logout().then(data => {
         console.log(data)
@@ -20,7 +20,9 @@ import { AuthContext } from '../ContextApi/AuthContext'; // framework for provid
         if(!data.isAuthenticated){
           setUser(data.user); // set the username and role to empty strings
           setAuthenticated(false);
-          return <Redirect to='/' />
+          history.push('./');  //back to the home page
+         
+         
         }
       }) 
     }
@@ -39,12 +41,12 @@ import { AuthContext } from '../ContextApi/AuthContext'; // framework for provid
              </Link>
         </li>
         <li id="menu-item-40" className="nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-40" >
-             <Link to="/record-your-learning" class="nav-link">
+             <Link to="/" class="nav-link">
              Record My Learning Opportunities
              </Link>
         </li>
         <li id="menu-item-40" className="nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-40" >
-          <Link to="/reflect-your-learning" class="nav-link">
+          <Link to="/" class="nav-link">
             Reflect My Learning Opportunities
           </Link>
         </li>

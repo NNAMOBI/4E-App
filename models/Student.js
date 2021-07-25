@@ -28,17 +28,18 @@ const StudentSchema = mongoose.Schema({
           type: String,
           enum: ['user', 'admin'],
           required: true
-    }
-},{
-    toJSON: {
-        transform: (doc, ret) => {
-            ret.Id = ret._id;
-            
-        }
-    }
+    },
+    learning: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Learning'
+    }],
+    reflections: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'MyReflections'
+    }]
+
    
-}
-);
+});
 
 //hash function for passwords
 StudentSchema.pre('save', function(next){

@@ -52,7 +52,27 @@ module.exports = {
              
          })
           
-         } 
+         },
+    sendRecord: (content,type, date,token)=> {  // sending the recording data to the backend
+        const userData = {
+            content,
+            type,
+            date,
+            token
+        }
+        return fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/learning`, {
+            method: "post",
+            body: JSON.stringify(userData),
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        }).then(res=> {
+            if(res.status !== 401)
+            return res.json().then(data => data);
+            else
+                return {isAuthenticated: false, user: {username: "", role: ""}}
+         })
+    }
 }
 
 
