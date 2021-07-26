@@ -68,8 +68,8 @@ import { AuthContext } from '../ContextApi/AuthContext'; // framework for provid
                { // check if the user is an admin then show the dashboard link
                  user.role === "admin" ?
         <li id="menu-item-963" className="nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-963">
-                <Link to="/dashboard" className="nav-link" >
-                      Dashboard
+                <Link to="/admin" className="nav-link" >
+                      Admin
                   </Link> 
         </li> : null
                }

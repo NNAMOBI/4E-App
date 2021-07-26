@@ -9,11 +9,10 @@ const MyReflectionsSchema = mongoose.Schema({
         required: true,
         allowNull: false
     },
-    resource: {
+    resource: [{
         type: String, 
-        required: true,
-        allowNull: false
-    }
+        allowNull: true
+    }]
 },
 {
     timestamps: true

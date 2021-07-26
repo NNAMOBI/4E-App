@@ -3,11 +3,11 @@
 //libraries
 const router = require('express').Router();
 const learningController = require('./../../learning/learningController')
-const passport = require('passport')
+const passport = require('passport')  // for authentication
 
 
 
-// router.get('/', userController.createUser);
+
 
 
 //learning Endpoint
@@ -16,4 +16,4 @@ router.post('/learning', learningController.createRecording)// create records in
 
 
 
-module.exports = router;
+module.exports = router;  // export

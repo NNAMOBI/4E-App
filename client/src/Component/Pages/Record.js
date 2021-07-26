@@ -10,13 +10,14 @@ import RecordService from '../../Services/RecordService';  // service to authent
 
 //function to handle recording learning
 function Record() {
-   const [content, setContent] = useState("");  //use state to handle content field
+   const [content, setContent] = useState({content: ""});  //use state to handle content field
    const [type, setType] = useState("");    //state to handle type of learning field
-   const [date, setDate] = useState("");   // state to handle date picker
+   const [date, setDate] = useState({date: ""});   // state to handle date picker
    const [message, setMessage] = useState(null);  //message null is not to render the message component
    let history = useHistory(); // call a function that routes
     
     
+   
 
     const onSubmit=(e)=> {
       e.preventDefault();   // prevent the default of the browser
@@ -28,7 +29,6 @@ function Record() {
       RecordService.postRecord(content, type, date, token).then(data =>{ //api to login from the backend
         console.log(data)
         const {message} = data;  // pull out the message from our data
-        // resetForm();   //reset the form
         if(!message.msgError){    //if no error from the backend
           setMessage(message)    // show the success message
 
@@ -95,7 +95,7 @@ function Record() {
             <h5 class="display-5 text">Date of Learning Opportunity</h5>
             {/* <label for="start">Start date:</label> */}
 
-          <input type="date" class="text" id="start" 
+          <input type="date" class="text" id="start" value={date.date}
            placeholder= "DAY/ MONTH /YEAR" onChange={(e)=> setDate(e.target.value)}/>
              </div> 
 
@@ -115,7 +115,7 @@ function Record() {
                       <p class="details">(Who, What, Where and When)</p>
                   
                   {/* text area starts */}
-                  <textarea class="form-control form-control-lg mb-3" rows="5" 
+                  <textarea class="form-control form-control-lg mb-3"  value= {content.content} rows="5" 
                   onChange={(e)=> setContent(e.target.value)}></textarea>
                  
                   

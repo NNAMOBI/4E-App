@@ -8,7 +8,7 @@
 
 
 /*
- * MVC - Controller to handle the Creation of learning records /api-1
+ * MVC - Controller to handle the Creation of reflection records /api-1
  * @param req
  * @param res
  * @param next
@@ -18,15 +18,16 @@
 
 const JWT = require('jsonwebtoken');   //jwt for sessions
 const credentials = require('../Util/helper');   // call a function to verify the token  
-const StudentModel = require('../models/Student');  //student model/ table
-const LearningModel = require('../models/Learning')
+const StudentModel = require('../models/Student');  // importing student model/ table
+const LearningModel = require('../models/Learning')  // importing learning model/ table
+const ReflectionModel = require('../models/MyReflections')  // importing myReflections model/ table
 
 
 //api-1
-exports.createRecording = async (req, res, next)=> {    
+exports.createReflectionRecords = async (req, res, next)=> {    
     console.log("req.body=>", req.body)
     try {
-    const {token, content, type, date} = req.body      // get the data from the request body
+    const {token, content} = req.body      // get the data from the request body
     const decodeToken = await credentials.verifyJwt(token, process.env.SESSION_SECRET)    //sign the jwt
     if(decodeToken === "jwt expired")
     return res.status(400).json({message: {msgBody: "Session expired please Login again"   //if no student log server error
@@ -38,23 +39,20 @@ exports.createRecording = async (req, res, next)=> {
     return res.status(500).json({message: {msgBody: "An error has  occurred"   //if no student log server error
                                    ,msgError: true}})  
       else {
-       const studentLearningRecord = new LearningModel({     // save what students recorded in the db
-                  title:content, 
-                  typeOfLearning: type, 
-                  dateOfLearning: date
+       const studentReflections = new ReflectionModel({     // save what students recorded in the db
+                  content, 
+                  
                 });
-        studentLearningRecord.save((err,result) => {
+                studentReflections.save((err,result) => {   //save the learning recording in the learning table
           if(err) {
             console.log("err=>", err.message)
           }
-        console.log("result=>", result)
-            student.learning.push(result)
+            student.reflections.push(result)           // push the learning record into the student table  
             student.save((err, document)=> {
               if(err) {
                 console.log("error in saving", err)
               } else{
-                console.log("document=>",document)
-                res.status(201).json({message: {msgBody: "your learning has been documented successfully",msgError: false}})
+                res.status(201).json({message: {msgBody: "your reflections has been documented successfully",msgError: false}})
               }
               
             })           
