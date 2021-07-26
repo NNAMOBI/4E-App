@@ -13,12 +13,10 @@ const MyReflectionsSchema = mongoose.Schema({
         type: String, 
         required: true,
         allowNull: false
-    },
-    student: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Student'
     }
-
+},
+{
+    timestamps: true
    
 });
 // schema.plugin(mongoosePaginate);

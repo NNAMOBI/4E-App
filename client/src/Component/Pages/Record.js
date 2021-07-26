@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom'
 import NavigationComponent from '../NavigationComponent';   // navigation component
 import './record.css';  //css styling for this component
 import {useState} from 'react'  // library for state
-import AuthService from '../../Services/AuthService';  // service to authenticate the user
+import RecordService from '../../Services/RecordService';  // service to authenticate the user
  import Message from '../../Component/Message';   // message we get from the server
 
 
@@ -19,14 +19,25 @@ function Record() {
     
 
     const onSubmit=(e)=> {
-      e.preventDefault();
+      e.preventDefault();   // prevent the default of the browser
       console.log("all data=>", content, type, date);
-      const token = localStorage.getItem('access_token');
+      const token = localStorage.getItem('access_token'); // store the accesstoken in the local storage
       console.log(token)
       if(!token)
       history.push('./');  //back to the home page
-      AuthService.sendRecord(content, type, date, token).then(data =>{ //api to login from the backend
+      RecordService.postRecord(content, type, date, token).then(data =>{ //api to login from the backend
         console.log(data)
+        const {message} = data;  // pull out the message from our data
+        // resetForm();   //reset the form
+        if(!message.msgError){    //if no error from the backend
+          setMessage(message)    // show the success message
+
+        }else if(message.msgBody === "UnAuthorized"){   // this means the token is expired
+               setMessage(message)  //since the jwo
+        }else {
+            setMessage(message)
+        }
+        
 
        })
     }

@@ -27,7 +27,7 @@ function Login(props) {
     const onSubmit = (e) => {
         e.preventDefault();
         AuthService.login(user).then(data =>{ //api to login from the backend
-            console.log(data.token)  
+            console.log("data=>", data.token)  
             localStorage.setItem('access_token', data.token);
             const {isAuthenticated, user, message} = data
             //if authenticated, update the global context of the user

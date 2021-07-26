@@ -61,11 +61,11 @@ exports.createStudent = async (req, res, next)=> {
 
 
 //controller to login student -2
-exports.loginStudent = (req, res, next)=> {
+exports.loginStudent = async (req, res, next)=> {
     if(req.isAuthenticated()){
         console.log("req.user=>", req.user)
         const {_id, name, username,email,password, role} = req.user; //return the object after comparing password form the auth
-        const token = credentials.signJwt(_id); //sign the jwt
+        const token = await credentials.signJwt(_id); //sign the jwt
         res.cookie('access_token', token,{httpOnly: true, sameSite: true}); //httpOnly prevent against cross-site scripting attack on the client
         // console.log("user.role=>",user.role)
         console.log("token=>",token)                                                          //sameSite prevent against cross site forgery attacks

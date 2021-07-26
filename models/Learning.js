@@ -1,31 +1,29 @@
 const mongoose = require('mongoose');  //mongoose library
 
 
+
 //schema for learning table
 const LearningSchema = mongoose.Schema({
     
     title: {
         type: String, 
-        required: true,
-        allowNull: false
+        required: true
+        
     },
     dateOfLearning: {
         type: Date, 
-        required: true,
-        allowNull: false
+        required: true
+        
     },
     typeOfLearning: {
         type: String,
-        required: true,
-        allowNull: false
+        required: true
+       
         
-    },
-    student: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Student'
     }
-
-   
+},
+{
+    timestamps: true
 });
 // schema.plugin(mongoosePaginate);
 module.exports =  mongoose.model("Learning", LearningSchema);
