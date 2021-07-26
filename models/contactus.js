@@ -1,20 +1,21 @@
+
 const mongoose = require('mongoose');  //mongoose library
 
 
 //schema for learning table
-const LearningSchema = mongoose.Schema({
+const ContactSchema = mongoose.Schema({
     
-    title: {
+    name: {
         type: String, 
         required: true,
         allowNull: false
     },
-    dateOfLearning: {
+    email: {
         type: Date, 
         required: true,
         allowNull: false
     },
-    typeOfLearning: {
+    Message: {
         type: String,
         required: true,
         allowNull: false
@@ -28,4 +29,4 @@ const LearningSchema = mongoose.Schema({
    
 });
 // schema.plugin(mongoosePaginate);
-module.exports =  mongoose.model("Learning", LearningSchema);
+module.exports =  mongoose.model("Learning", ContactSchema);

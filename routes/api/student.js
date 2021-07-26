@@ -22,4 +22,4 @@ router.get('/auth', passport.authenticate('jwt',{session: false}), studentContro
 
 
 
-module.exports = router;
+module.exports = router;   //export 

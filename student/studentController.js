@@ -30,7 +30,7 @@ exports.createStudent = async (req, res, next)=> {
         console.log("req.body=>", req.body)
    try {
     const {name, username, email, password, role} = req.body;
-    await Student.findOne({email}, (err, student)=> {
+    await Student.findOne({email}, async (err, student)=> {
        if(err)
       return res.status(500).json({message: {msgBody: "An error has  occurred"
                                        ,msgError: true}})
@@ -41,6 +41,7 @@ exports.createStudent = async (req, res, next)=> {
            console.log("found student")
            const studentNew = new Student({name, username, email, password, role});
           const userStudent = studentNew.save()
+          console.log(userStudent)
        if(userStudent){
            res.status(201).json({message: {msgBody: "your account has been successfully created",msgError: false}})
        }else {
@@ -69,7 +70,8 @@ exports.loginStudent = (req, res, next)=> {
         // console.log("user.role=>",user.role)
         console.log("token=>",token)                                                          //sameSite prevent against cross site forgery attacks
     res.status(200).json({isAuthenticated: true,
-                          user: {username, role}})                                                                     
+                          user: {username, role},
+                          token: token})                                                                     
 }
 }
 
