@@ -14,10 +14,8 @@ import { AuthContext } from '../ContextApi/AuthContext'; // framework for provid
     const logoutHandler = ()=> {
       console.log("i am about to use the authservice logout")
       AuthService.logout().then(data => {
-        console.log(data)
-        console.log(data.isAuthenticated)
-        console.log("data.success=>",data.success)
         if(!data.isAuthenticated){
+        localStorage.clear();
           setUser(data.user); // set the username and role to empty strings
           setAuthenticated(false);
           history.push('./');  //back to the home page

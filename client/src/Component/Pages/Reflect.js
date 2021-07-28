@@ -24,7 +24,7 @@ function Reflect(props) {
   const onSubmit=(e)=> {
     e.preventDefault();   // prevent the default of the browser
     console.log("all data=>", content);
-    const token = localStorage.getItem('access_token'); // store the accesstoken in the local storage
+    const token = localStorage.getItem('access_token'); // get the accesstoken in the local storage
     console.log(token)
     if(!token)
     history.push('./');  //back to the home page

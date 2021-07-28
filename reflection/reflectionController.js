@@ -26,6 +26,7 @@ const ReflectionModel = require('../models/MyReflections')  // importing myRefle
 //api-1
 exports.createReflectionRecords = async (req, res, next)=> {    
     console.log("req.body=>", req.body)
+    
     try {
     const {token, content} = req.body      // get the data from the request body
     const decodeToken = await credentials.verifyJwt(token, process.env.SESSION_SECRET)    //sign the jwt
@@ -34,15 +35,14 @@ exports.createReflectionRecords = async (req, res, next)=> {
                                    ,msgError: true}})  
     console.log('decoded=>', decodeToken)
     const student =  await StudentModel.findOne({_id: decodeToken.sub})  //find one student by Id
-    console.log(student)
     if(!student)
     return res.status(500).json({message: {msgBody: "An error has  occurred"   //if no student log server error
                                    ,msgError: true}})  
       else {
        const studentReflections = new ReflectionModel({     // save what students recorded in the db
-                  content, 
-                  
+                  content,                
                 });
+                studentReflections.student = student;   //Assign this learning to the user  
                 studentReflections.save((err,result) => {   //save the learning recording in the learning table
           if(err) {
             console.log("err=>", err.message)

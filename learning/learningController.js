@@ -24,16 +24,13 @@ const LearningModel = require('../models/Learning')
 
 //api-1
 exports.createRecording = async (req, res, next)=> {    
-    console.log("req.body=>", req.body)
     try {
-    const {token, content, type, date} = req.body      // get the data from the request body
+    const {token, content, type, date, filePath, fileName} = req.body      // get the data from the request body
     const decodeToken = await credentials.verifyJwt(token, process.env.SESSION_SECRET)    //sign the jwt
     if(decodeToken === "jwt expired")
     return res.status(400).json({message: {msgBody: "Session expired please Login again"   //if no student log server error
                                    ,msgError: true}})  
-    console.log('decoded=>', decodeToken)
     const student =  await StudentModel.findOne({_id: decodeToken.sub})  //find one student by Id
-    console.log(student)
     if(!student)
     return res.status(500).json({message: {msgBody: "An error has  occurred"   //if no student log server error
                                    ,msgError: true}})  
@@ -43,27 +40,78 @@ exports.createRecording = async (req, res, next)=> {
                   typeOfLearning: type, 
                   dateOfLearning: date
                 });
-        studentLearningRecord.save((err,result) => {
+
+        studentLearningRecord.student = student; 
+        studentLearningRecord.resource.push(fileName);   //use array method to push fileName into the db
+        studentLearningRecord.filePath.push(filePath);   // use Array method to push filepath into the db
+        studentLearningRecord.save((err,result) => {   
           if(err) {
             console.log("err=>", err.message)
           }
         console.log("result=>", result)
-            student.learning.push(result)
-            student.save((err, document)=> {
+            student.learning.push(result)      //push the learning data into the users(student) model
+            student.save((err, document)=> {    /// then save the student's data 
               if(err) {
                 console.log("error in saving", err)
               } else{
                 console.log("document=>",document)
                 res.status(201).json({message: {msgBody: "your learning has been documented successfully",msgError: false}})
-              }
-              
+              }          
             })           
     }) 
-      
    }
 }catch(err){
     if(err)
      console.error(err)
- 
 }
   }
+
+exports.fetchLearningRecords =async(req, res, next)=> {
+    // console.log('req.query=>',req.query);
+    try {
+    const token = req.query.token
+    const decodeToken = await credentials.verifyJwt(token, process.env.SESSION_SECRET)    //sign the jwt
+    if(decodeToken === "jwt expired")
+    return res.status(400).json({message: {msgBody: "Session expired please Login again"   //if no student log server error
+                                   ,msgError: true}})  
+    // console.log('decoded=>', decodeToken)
+    const studentLearningRecords =  await StudentModel.findById({_id: decodeToken.sub}) //find one student by Id
+                                        .populate('learning')
+    const studentReflectionRecords =  await StudentModel.findById({_id: decodeToken.sub})
+                                        .populate('reflections')              
+      
+    if(!studentLearningRecords.learning)
+    return res.status(500).json({message: {msgBody: "An error has  occurred"   //if no student log server error
+                                   ,msgError: true}})  
+     else {
+    res.status(201).json({
+                    message: {
+                           msgBody: "your learning has been documented successfully",
+                           msgError: false, 
+                            },
+                    records: studentLearningRecords.learning,
+                    reflections: studentReflectionRecords.reflections
+                        })
+      }
+    }catch(err){
+      if(err)
+      console.error(err.message)
+    }
+
+}
+
+
+exports.writeFile= async (req,res)=> {
+    if(req.files === null){
+        return res.status(400).json({msg: 'No file upload'})
+    }
+    const file = req.files.file;
+
+    file.mv(`${__dirname}/../client/public/uploads/${file.name}`, err=>{
+        if(err){
+          console.error(err.message)
+          return res.status(500).send(err);
+        }
+        res.json({fileName: file.name, filePath: `/uploads/${file.name}`})
+    })
+}

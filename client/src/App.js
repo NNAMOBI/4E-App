@@ -13,6 +13,8 @@ import Login from './Component/Pages/Login';
 import Record from './Component/Pages/Record';
 import Reflect from './Component/Pages/Reflect';
 import InfoGuide from './Component/Pages/InfoGuide';
+// import LearningRecords from './Component/LearningRecords';
+import Sidebar from './Component/Sidebar'
 import React from 'react';
 
 
@@ -39,6 +41,7 @@ function App() {
              <Route path="/record-your-learning" exact strict component={Record} />
              <Route path="/reflect-your-learning" exact strict component={Reflect} />
              <Route path="/info-guide" exact strict component={InfoGuide} />
+             <Route path="/admin" exact strict component={Sidebar} />
          </Switch>    {/*  to switch to the exact route ends here */}
       </>
     

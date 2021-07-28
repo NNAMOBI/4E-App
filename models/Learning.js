@@ -17,9 +17,19 @@ const LearningSchema = mongoose.Schema({
     },
     typeOfLearning: {
         type: String,
-        required: true
-       
-        
+        required: true      
+    },
+    resource: [{
+        type: String, 
+        allowNull: true
+    }],
+    filePath: [{
+        type: String,
+        allowNull: true
+    }],
+    student: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Student'
     }
 },
 {

@@ -8,7 +8,7 @@ module.exports = {
            content,
            token
        }
-       return fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/reflection`, {
+       return fetch('/api/users/reflection', {
            method: "post",
            body: JSON.stringify(userData),
            headers: {
@@ -22,7 +22,7 @@ module.exports = {
         })
    },
    getMyReflections: ()=> {
-    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/reflection/:id`)
+    return fetch('/api/users/reflection/:id')
     .then(res=> {
         if(res.status !== 401)
         return res.json().then(data => data);

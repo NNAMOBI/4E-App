@@ -3,7 +3,7 @@
 
 module.exports = {
      login: user => {
-         return fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/login`, {
+         return fetch('/api/users/login', {
              method: "post",
              body: JSON.stringify(user),
              headers: {
@@ -18,7 +18,7 @@ module.exports = {
           
      },
      register: user => {
-        return fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/register`, {
+        return fetch('/api/users/register', {
             method: "post",
             body: JSON.stringify(user),
             headers: {
@@ -33,7 +33,7 @@ module.exports = {
     },
     logout: ()=>{
         console.log("am i about to make a request")
-       return fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/logout`)
+       return fetch('/api/users/logout')
        .then(res=> {
         if(res.status !== 401)
         return res.json().then(data => data);
@@ -43,7 +43,7 @@ module.exports = {
     })
    },
      isAuthenticated: () => {   //syncing the back-end with the front-end
-        return fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/auth`)
+        return fetch('api/users/auth')
          .then(res=> {
              if(res.status !== 401)
              return res.json().then(data => data);

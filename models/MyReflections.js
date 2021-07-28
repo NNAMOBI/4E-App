@@ -6,13 +6,12 @@ const MyReflectionsSchema = mongoose.Schema({
     
     content: {
         type: String, 
-        required: true,
-        allowNull: false
-    },
-    resource: [{
-        type: String, 
         allowNull: true
-    }]
+    },
+    student: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Student'
+    }
 },
 {
     timestamps: true

@@ -1,0 +1,29 @@
+
+
+.side-bar {
+    display: flex;
+    height: 100vh;
+    /* overflow:scroll initial; */
+    color: #350564;
+    background: #ffffff;
+    
+}
+
+.contain-sidebar{
+    
+}
+
+.dash-style {
+    color: #fff;
+    font-size: 19px;
+    font-weight: 600;
+    font-family: sans-serif;
+}
+
+.footer {
+    text-align: center;
+}
+
+.footer-style {
+    padding: 20px 50px;
+}
