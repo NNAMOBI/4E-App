@@ -21,6 +21,7 @@ const credentials = require('../Util/helper');   // call a function to verify th
 const StudentModel = require('../models/Student');  // importing student model/ table
 const LearningModel = require('../models/Learning')  // importing learning model/ table
 const ReflectionModel = require('../models/MyReflections')  // importing myReflections model/ table
+const moment = require('moment')
 
 
 //api-1
@@ -28,7 +29,7 @@ exports.createReflectionRecords = async (req, res, next)=> {
     console.log("req.body=>", req.body)
     
     try {
-    const {token, content} = req.body      // get the data from the request body
+    const {token, date, content} = req.body      // get the data from the request body
     const decodeToken = await credentials.verifyJwt(token, process.env.SESSION_SECRET)    //sign the jwt
     if(decodeToken === "jwt expired")
     return res.status(400).json({message: {msgBody: "Session expired please Login again"   //if no student log server error
@@ -40,7 +41,8 @@ exports.createReflectionRecords = async (req, res, next)=> {
                                    ,msgError: true}})  
       else {
        const studentReflections = new ReflectionModel({     // save what students recorded in the db
-                  content,                
+                  content,           //the reflection of the student
+                  recordingDate: moment(date).format('MMMM D Y') //convert the date to string              
                 });
                 studentReflections.student = student;   //Assign this learning to the user  
                 studentReflections.save((err,result) => {   //save the learning recording in the learning table

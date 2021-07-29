@@ -3,9 +3,11 @@
 
 
 module.exports = {
-   postMyReflections: (content, token)=> {  // sending the recording data to the backend
+   postMyReflections: (content, date, token)=> {  // sending the recording data to the backend
+     console.log("date=>", date)
        const userData = {
            content,
+           date,
            token
        }
        return fetch('/api/users/reflection', {

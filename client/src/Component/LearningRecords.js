@@ -1,10 +1,12 @@
 //component to fetch the learning records
 import React, {useState, useEffect} from 'react';  //import react libraries
 import {useHistory} from 'react-router-dom'  // library for react routing
-import RecordItem  from '../Component/RecordItemCom';
-import ReflectItem from '../Component/ReflectItemCom';
+// import RecordItem  from '../Component/RecordItemCom';
+// import ReflectItem from '../Component/ReflectItemCom';
 import RecordService from '../Services/RecordService';
-
+import RecordPostcard from './RecordPostcard';
+import ReflectPostcard from './ReflectPostCard';
+import Sidebar from  './Sidebar';
 
 
 
@@ -18,13 +20,12 @@ function LearningRecords() {
     // a componentDidMount method
     useEffect(()=>{
         const fetchBusinesses=()=> {
-        console.log(" i am in the useEffect")
        const token = localStorage.getItem('access_token'); // get the accesstoken in the local storage
        console.log(token)
        if(!token)
        history.push('./');  //back to the home page
         RecordService.getLearningRecords(token).then(data=> {
-            console.log("data=>" ,data.reflections)
+            console.log("records=>",data.records)
         setRecords(data.records)
         setReflections(data.reflections)
         })
@@ -35,36 +36,48 @@ function LearningRecords() {
 
 
     return (
-        <div>
-        <div className=" text-center" style={{margin: "6% auto"}}>
-            <h2>Learning Records</h2>
-            <ul className="list-group"> 
-              
-                {
+        <div className="outer-container">
+            <Sidebar />
+
+        <div className="jumbotron jumbotron-fluid">
+            <div class="container">
+                <div class="row">
+                         <div class="col">
+        
+            <h2 className="text">CPD Recordings</h2>
+            <ul className="list-group">         
+                   {
                     records.map(record => {
                         console.log("record=>",record)
-                        return <RecordItem key={record._id} record={record} />
+                        return <RecordPostcard  key={record._id} record={record} />  //recordings
                     })
-                }
+                  }
                 
             </ul>
-            </div>
-            <div className=" text-center" style={{margin: "6% auto"}}>
-            <h2>Reflection Records</h2>
-            <ul className="list-group"> 
-              
-                {
-                    reflections.map(reflection => {
+                       </div>
+             
+                    <div class="col">
+             
+                      <h2 className="text">Reflections</h2>
+                         <ul className="list-group">          
+                     {
+                      reflections.map(reflection => {
                         console.log("record=>",reflection)
-                        return <ReflectItem key={reflection._id} reflection={reflection} />
+                        return <ReflectPostcard key={reflection._id} reflection={reflection} /> //reflections
                     })
-                }
-                
-            </ul>
+                    }
+                 
+                        </ul>
            
+                    </div>
         </div>
+                
         </div>
+            </div>
+            </div>
+           
     )
 }
 
-export default LearningRecords
+
+export default LearningRecords;

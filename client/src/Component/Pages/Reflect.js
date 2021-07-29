@@ -19,16 +19,16 @@ import Message from '../../Component/Message'; //message component to display me
 function Reflect(props) {
   const [content, setContent] = useState({content: ""});  //use state to handle content field
   const [message, setMessage] = useState(null);  //message null is not to render the message component
+  const [date, setDate] = useState({date: ""}); 
   let history = useHistory(); // call a function that routes
 
   const onSubmit=(e)=> {
     e.preventDefault();   // prevent the default of the browser
-    console.log("all data=>", content);
     const token = localStorage.getItem('access_token'); // get the accesstoken in the local storage
     console.log(token)
     if(!token)
     history.push('./');  //back to the home page
-    ReflectingService.postMyReflections(content, token).then(data =>{ //api to post content to the backend
+    ReflectingService.postMyReflections(content, date, token).then(data =>{ //api to post content to the backend
       console.log(data)
       const {message} = data;  // pull out the message from our server data
       if(!message.msgError){    //if no error from the backend
@@ -44,6 +44,8 @@ function Reflect(props) {
      })
   }
 
+     
+
 
     return (
         <div>
@@ -56,13 +58,20 @@ function Reflect(props) {
 
 
                   <div class="jumbotron jumbotron-fluid">
-                  <h5 class="display-5 text">How did opportunity come about? </h5>
-                    <p class="details">(tick as appropriate) </p>   
+                  <h5 class="display-5 text">What was the opportunity about? </h5>
+                    <p class="details"> Write your reflections </p>   
                        {/* radio button starts here */}
               <textarea class="form-control form-control-lg mb-3" rows="5" value= {content.content} 
               onChange={(e)=> setContent(e.target.value)}>
 
               </textarea>
+            <div className="date-of-learning">
+            <h5 className="display-5 text">Date you recorded your Cpd</h5>
+            {/* <label for="start">Start date:</label> */}
+
+          <input type="date" className="text" id="start" value={date.date}
+           placeholder= "DAY/ MONTH /YEAR" onChange={(e)=> setDate(e.target.value)}/>
+             </div> 
                  
                <button class="btn btn-default btn-block my-4" type="submit" id="btn-reflect">Submit my Reflection</button> 
                   </div>

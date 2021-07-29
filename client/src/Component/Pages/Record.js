@@ -107,7 +107,7 @@ function Record() {
            {/* date of learning opportunity second jumbotron start*/}
 
            <div className="jumbotron jumbotron-fluid">
-           <div className="Namedate-of-learn">
+           <div className="date-of-learning">
             <h5 className="display-5 text">Date of Learning Opportunity</h5>
             {/* <label for="start">Start date:</label> */}
 

@@ -9,12 +9,16 @@ import {
     CDBSidebarMenu       //  
 }  from 'cdbreact';
 import './sidebar.css'   //css for this component
+// import RecordPostcard from './RecordPostcard';
+// import ReflectPostcard from './ReflectPostCard';
 
 
-
+// components for the admin sidebar
 function Sidebar() {
     return (
+       
     <div className="side-bar">
+       
         <CDBSidebar textColor="#fff" backgroundColor="#350564" className="contain-sidebar">
               <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
                  <Link to="/" className="text-decoration-none dash-style">
@@ -30,7 +34,7 @@ function Sidebar() {
                            Dashboard
                        </CDBSidebarMenuItem>
                      </Link>
-                     <Link to="" activeClassName="activeClicked">
+                     <Link to="/postcard" activeClassName="activeClicked">
                        <CDBSidebarMenuItem><i class="fas fa-chalkboard-teacher"></i>
                        <span style={{marginLeft: "10px"}}>Postcard</span>
                        </CDBSidebarMenuItem>
@@ -60,8 +64,11 @@ function Sidebar() {
                 </CDBSidebarFooter>
          
      </CDBSidebar>
-            
+     
         </div>
+
+            
+       
     )
 }
 

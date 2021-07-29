@@ -11,7 +11,7 @@ const LearningSchema = mongoose.Schema({
         
     },
     dateOfLearning: {
-        type: Date, 
+        type: String, 
         required: true
         
     },
@@ -35,5 +35,7 @@ const LearningSchema = mongoose.Schema({
 {
     timestamps: true
 });
+
+
 // schema.plugin(mongoosePaginate);
 module.exports =  mongoose.model("Learning", LearningSchema);

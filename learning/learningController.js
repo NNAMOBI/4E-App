@@ -20,6 +20,7 @@ const JWT = require('jsonwebtoken');   //jwt for sessions
 const credentials = require('../Util/helper');   // call a function to verify the token  
 const StudentModel = require('../models/Student');  //student model/ table
 const LearningModel = require('../models/Learning')
+const moment = require('moment')
 
 
 //api-1
@@ -38,7 +39,7 @@ exports.createRecording = async (req, res, next)=> {
        const studentLearningRecord = new LearningModel({     // save what students recorded in the db
                   title:content, 
                   typeOfLearning: type, 
-                  dateOfLearning: date
+                  dateOfLearning: moment(date).format('MMMM D Y') //convert the date to string
                 });
 
         studentLearningRecord.student = student; 
@@ -77,8 +78,12 @@ exports.fetchLearningRecords =async(req, res, next)=> {
     // console.log('decoded=>', decodeToken)
     const studentLearningRecords =  await StudentModel.findById({_id: decodeToken.sub}) //find one student by Id
                                         .populate('learning')
-    const studentReflectionRecords =  await StudentModel.findById({_id: decodeToken.sub})
-                                        .populate('reflections')              
+     let queryDate = studentLearningRecords.learning.dateOfLearning;
+     console.log("queryDate=>", queryDate);
+    const studentReflectionRecords =  await StudentModel.findOne({
+                                      _id: decodeToken.sub,
+                                      recordingDate: queryDate
+                                     }).populate('reflections')              
       
     if(!studentLearningRecords.learning)
     return res.status(500).json({message: {msgBody: "An error has  occurred"   //if no student log server error

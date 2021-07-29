@@ -47,7 +47,7 @@ const StudentSchema = mongoose.Schema({
    
 });
 
-//hash function for passwords
+//function to hash passwords
 StudentSchema.pre('save', function(next){
     if(!this.isModified('password'))
     return next();
