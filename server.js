@@ -17,18 +17,20 @@
  * calling the route that performs the model and controller in the MVC -6
  * allow for cross origin from the browser over http-7
  * starting up the database server -8
- * To create cookie sessions
+ * To create cookie sessions -9
+ * for file upload  -10 
  
  */
 
  
 
 //importing / importing libraries-2
-const { required } = require('@hapi/joi');
-const express = require('express');
+const { required } = require('@hapi/joi');  // for for validation
+const express = require('express');   // for server setup
 const app = express();
-const path = require('path')
-const http = require('http')
+const fileUpload = require('express-fileupload');
+const path = require('path')  // for routing to the exact static file
+const http = require('http')   // request and response protocol
 require('dotenv').config();  //to check for environmental variables
 // const {port} = require("./config");  // -3
 const port = process.env.PORT 
@@ -48,20 +50,8 @@ app.use(cors());   //-7
 app.use(express.json());   //4
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser()); //9
-// app.use(express.static(path.join(__dirname, 'client/build'))); //serving static files
+app.use(fileUpload()) //10
 
-
-// app.get('/*', (req, res)=>{
-// res.sendFile(path.join(__dirname, 'client/build', 'index.html')) //handle react routing, return all request to React app
-//  })
-// catch 404 and forward to error handler
-// app.use(function (req, res, next) {
-//     next(createError(404));
-//   });
-
-
-//error handler
-// app.use(errorHandler);
 
 
 // Invoking All routes  -6
@@ -70,23 +60,22 @@ require('./startUps/database')  // -8
 const Student = require('./models/Student');
 
 
-// const studentInput = {
-//     name: "Namo",
-//     username: "namoski",
-//     email: "nnamosuag@yahoo.com",
-//     password: "kingdom",
-//     role: 'admin'
-// }
-
-// const student = new Student(studentInput);
-// student.save((err, document)=> {
-//     if(err){
-//         console.log(err)
-//     }else {
-//         console.log(document)
+// //upload Endpoint
+// app.post('/upload', (req,res)=> {
+//     if(req.files === null){
+//         return res.status(400).json({msg: 'No file upload'})
 //     }
-// })
+//     const file = req.files.file;
+//     console.log("file=>", file)
 
+//     file.mv(`${__dirname}/client/public/uploads/${file.name}`, err=>{
+//         if(err){
+//           console.error(err.message)
+//           return res.status(500).send(err);
+//         }
+//         res.json({fileName: file.name, filePath: `/uploads/${file.name}`})
+//     })
+// })
 
 
 

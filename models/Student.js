@@ -1,3 +1,5 @@
+//Student model 
+
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
@@ -36,12 +38,16 @@ const StudentSchema = mongoose.Schema({
     reflections: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'MyReflections'
-    }]
-
+    }],
+},
+    {
+        timestamps: true
+    
+    
    
 });
 
-//hash function for passwords
+//function to hash passwords
 StudentSchema.pre('save', function(next){
     if(!this.isModified('password'))
     return next();

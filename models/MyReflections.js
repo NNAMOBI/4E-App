@@ -2,24 +2,27 @@ const mongoose = require('mongoose');
 
 
 
-const MyReflectionsSchema = mongoose.Schema({
-    
+
+const MyReflectionsSchema = mongoose.Schema({   
     content: {
         type: String, 
-        required: true,
-        allowNull: false
+        allowNull: true
     },
-    resource: {
-        type: String, 
-        required: true,
+    recordingDate: {
+        type: String,
         allowNull: false
     },
     student: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Student'
     }
-
+},
+{
+    timestamps: true
    
 });
+
+
+   
 // schema.plugin(mongoosePaginate);
 module.exports =  mongoose.model("MyReflections", MyReflectionsSchema);

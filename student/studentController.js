@@ -27,7 +27,6 @@ const credentials = require('../Util/helper');
 
 //controller to create student
 exports.createStudent = async (req, res, next)=> {    
-        console.log("req.body=>", req.body)
    try {
     const {name, username, email, password, role} = req.body;
     await Student.findOne({email}, async (err, student)=> {
@@ -38,10 +37,8 @@ exports.createStudent = async (req, res, next)=> {
        return res.status(400).json({message: {msgBody: "Username already exist"
                                        ,msgError: true}})
        else {
-           console.log("found student")
            const studentNew = new Student({name, username, email, password, role});
           const userStudent = studentNew.save()
-          console.log(userStudent)
        if(userStudent){
            res.status(201).json({message: {msgBody: "your account has been successfully created",msgError: false}})
        }else {
@@ -61,14 +58,12 @@ exports.createStudent = async (req, res, next)=> {
 
 
 //controller to login student -2
-exports.loginStudent = (req, res, next)=> {
+exports.loginStudent = async (req, res, next)=> {
     if(req.isAuthenticated()){
-        console.log("req.user=>", req.user)
         const {_id, name, username,email,password, role} = req.user; //return the object after comparing password form the auth
-        const token = credentials.signJwt(_id); //sign the jwt
+        const token = await credentials.signJwt(_id); //sign the jwt
         res.cookie('access_token', token,{httpOnly: true, sameSite: true}); //httpOnly prevent against cross-site scripting attack on the client
-        // console.log("user.role=>",user.role)
-        console.log("token=>",token)                                                          //sameSite prevent against cross site forgery attacks
+                                                                //sameSite prevent against cross site forgery attacks
     res.status(200).json({isAuthenticated: true,
                           user: {username, role},
                           token: token})                                                                     
@@ -78,7 +73,6 @@ exports.loginStudent = (req, res, next)=> {
 
 //controller to logout student -2
 exports.logoutStudent = async(req, res, next)=> {
-        console.log("I am here to logout")
         await res.clearCookie('access_token'); // Clear the token so that the student will have to sign in again after he has logout
         await res.json({user: {username: "", role: ""},
                           success: true});             

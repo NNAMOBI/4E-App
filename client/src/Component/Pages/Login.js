@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react'
 import login_image from '../images/login_image.png';
 import './register.css';
 import {Link} from 'react-router-dom'; 
- import AuthService from '../../Services/AuthService';  // service to authenticate the user
- import Message from '../../Component/Message';   // message we get from the server
+import AuthService from '../../Services/AuthService';  // service to authenticate the user
+import Message from '../../Component/Message';   // message we get from the server
 import {AuthContext} from '../../ContextApi/AuthContext'; 
 
 
@@ -27,7 +27,7 @@ function Login(props) {
     const onSubmit = (e) => {
         e.preventDefault();
         AuthService.login(user).then(data =>{ //api to login from the backend
-            console.log(data.token)  
+            console.log("data=>", data.token)  
             localStorage.setItem('access_token', data.token);
             const {isAuthenticated, user, message} = data
             //if authenticated, update the global context of the user
