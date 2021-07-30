@@ -35,7 +35,7 @@
     padding: 20px 50px;
 }
 
-.jumbotron-fluid {
+#parent-jumbotron {
     display: table-cell;
     width: 85%;
     vertical-align: top;

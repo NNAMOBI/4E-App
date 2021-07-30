@@ -12,11 +12,12 @@
 
 
 .row-cols-1 {
-    margin: 20% auto;
-    border: 0px solid white;
+    /* border: 1px solid yellow !important; */
+    margin: 35% auto;
+    /* border: 0px solid white; */
     border-radius: 15px;
     /* background: #FFFFFF; */
-     width: 300px;
+     width: fit-content;
      padding: 15px 20px 30px 0.5px;
      box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.18)
   
@@ -26,64 +27,81 @@
 
 /* .event, .encounter, .enactment,  */
 .event, .encounter, .enactment, .experience{
-    /* border: 1px solid yellow; */
+    /* border: 1px solid yellow !important; */
     border: none;
     width: 132.42px;
-    padding: 5px;
+    /* padding: auto; */
+    margin-bottom: 3px !important;
+    /* padding-bottom: px !important; */
+    position: relative;
+    bottom: 27px;
    
    
 }
 
 /* parent div in the ContentFirstLayer */
-.display-2 {
-    width: fit-content;
-    height: fit-content;
+/* .display-2 { */
+    /* width: fit-content; */
+    /* height: fit-content; */
     /* margin-right: 80px; */
     /* margin-bottom: 50px; */ 
-}
+/* } */
 
 
 
  .card-title  { 
-    /* border: 1px solid red; */
+    /* border: 1px solid red!important; */
     background: #871CF2;
     color: #ffffff;
     position: relative;
-    bottom: 90px;
+    bottom: 160px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-    /* margin-top: auto; */
-    padding: 0.5px 0px 0.5px;
+    /* margin-top: 120px !important; */
+    /* padding-top: 15px !important; */
+    /* padding-right: 5px !important; */
+    /* width: 277px; */
     
 }  
 
+/* .footer-record-reflect {
+    border: 1px solid red!important;
+    width: 270px;
+} */
+
 .text {
-    padding-left: 40px;
+    padding-left: 30px !important;
+    
 }
 
 .record {
-  padding-top: 5px;
-  font-size: 16px;
+  padding-top: 2px;
+  font-size: 15px;
   line-height: 24px;
   font-family: sans-serif;
   font-weight: 600;
+  
 }
 
-.card-title .question {
-    font-size: 10px;
+ .card-title .questions { 
+   
+    font-size: 15px !important;
     line-height: 18px;
     font-family: sans-serif;
-    font-weight: 500;
-    margin-bottom: 20px;
+    font-weight: 400 !important;
+    margin-bottom: 10px;
+    padding-left: 30px !important;
+    padding-bottom: 5px !important;
+    
 }
 
 
 /* trigger sections styling here */
 #move-down {
-    padding-top: 20px;
+    padding-top: 20px !important;
 }
 
 
 #down {
-    padding-top: 70px;
+    padding-top: 50px !important;
 }

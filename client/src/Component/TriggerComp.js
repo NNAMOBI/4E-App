@@ -10,40 +10,40 @@ import experience_cpd from './images/experience_cpd.png';
 export default function TriggerComp() {
     return (
         <div>   {/* main div*/}
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-  <div class="col">
-    <div class="card event">
-      <img src={event_cpd}  class="card-img-top"  alt="" />
-      <div class="card-body">
-        {/* <h5 class="card-title">Card title</h5> */}
-        <p class="card-text"> Event</p>
+    <div className="row row-cols-1 row-cols-md-2 g-4">
+  <div className="col">
+    <div className="card event">
+      <img src={event_cpd}  className="card-img-top"  alt="" />
+      <div className="card-body">
+       
+        <p className="card-text"> Event</p>
       </div>
     </div>
   </div>
-  <div class="col">
-    <div class="card enactment">
-      <img src={enactment_cpd} class="card-img-top" alt=""/>
-      <div class="card-body">
-        {/* <h5 class="card-title">Card title</h5> */}
-        <p class="card-text"> Enactment</p>
+  <div className="col">
+    <div className="card enactment">
+      <img src={enactment_cpd} className="card-img-top" alt=""/>
+      <div className="card-body">
+        {/* <h5 className="card-title">Card title</h5> */}
+        <p className="card-text"> Enactment</p>
       </div>
     </div>
   </div>
-  <div class="col">
-    <div class="card encounter">
-      <img src={encounter_cpd} class="card-img-top" alt="" />
-      <div class="card-body">
-        {/* <h5 class="card-title">Card title</h5> */}
-        <p class="card-text"> Encounter</p>
+  <div className="col">
+    <div className="card encounter">
+      <img src={encounter_cpd} className="card-img-top" alt="" />
+      <div className="card-body">
+        {/* <h5 className="card-title">Card title</h5> */}
+        <p className="card-text"> Encounter</p>
       </div>
     </div>
   </div>
-  <div class="col">
-    <div class="card experience">
-      <img src={experience_cpd} class="card-img-top" alt="" width="" height="81.27px"/>
-      <div class="card-body">
-        {/* <h5 class="card-title">Card title</h5> */}
-        <p class="card-text">Experience</p>
+  <div className="col">
+    <div className="card experience">
+      <img src={experience_cpd} className="card-img-top" alt="eventImage" width="" height="87.27px"/>
+      <div className="card-body">
+        {/* <h5 className="card-title">Card title</h5> */}
+        <p className="card-text">Experience</p>
       </div>
     </div>
      {/* div for record section */}
@@ -52,9 +52,9 @@ export default function TriggerComp() {
   
 </div>
 {/* record section */}
-  <div class="card-title">
-  <h5 class="text record">Record</h5>
-  <h6 class="text questions">Who?, what?, Where? and When? </h6>
+  <div className="card-title footer-record-reflect">
+  <h5 className="text record">Record</h5>
+  <h6 className="text questions">Who?, what?, Where? and When? </h6>
   </div> 
  </div>   //main div ends here
     )

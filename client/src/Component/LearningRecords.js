@@ -39,7 +39,7 @@ function LearningRecords() {
         <div className="outer-container">
             <Sidebar />
 
-        <div className="jumbotron jumbotron-fluid">
+        <div className="jumbotron jumbotron-fluid" id="parent-jumbotron">
             <div class="container">
                 <div class="row">
                          <div class="col">

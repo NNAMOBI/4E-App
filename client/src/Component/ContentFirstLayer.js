@@ -12,17 +12,17 @@ export default function ContentFirstLayer() {
        
      <div class="row">
  {/* <! — first nested column → */}
- <div class="col-sm left-content">
- <h3 class="display-4 cpd-here">Document your CPD here</h3>
- <p>
+ <div className="col-sm left-content">
+ <h3 className="display-4 cpd-here">Document your CPD here</h3>
+ <p className="click-below">
  Your CPD can be archived using the  <br />repository tool.  Click below to learn  
  </p>
- <a href="/leanrn more" class="btn btn-default">Learn More</a>
+ <a href="/leanrn more" className="btn btn-default">Learn More</a>
   
      
  </div>
  
- {/* <h3 class="display-4">Learn Web Development The Right Way</h3> */}
+ {/* <h3 className="display-4">Learn Web Development The Right Way</h3> */}
  {/* <! — second nested column → */}
  {/* <div class="col-md"> */}
 

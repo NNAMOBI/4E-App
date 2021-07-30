@@ -11,10 +11,12 @@
 }
 
 .lead {
-    font-size: 14px;
+    
+    font-size: 14px !important;
     font-style: normal;
     font-family: sans-serif;
-    font-weight: normal;
+    font-weight: 400 !important;
     line-height: 160%;
     color: #350564;
+    
 }
