@@ -91,7 +91,7 @@ exports.fetchLearningRecords =async(req, res, next)=> {
      else {
     res.status(201).json({
                     message: {
-                           msgBody: "your learning has been documented successfully",
+                           msgBody: "Your learning has been documented successfully",
                            msgError: false, 
                             },
                     records: studentLearningRecords.learning,

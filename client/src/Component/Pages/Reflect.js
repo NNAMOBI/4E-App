@@ -73,7 +73,7 @@ function Reflect(props) {
            placeholder= "DAY/ MONTH /YEAR" onChange={(e)=> setDate(e.target.value)}/>
              </div> 
                  
-               <button class="btn btn-default btn-block my-4" type="submit" id="btn-reflect">Submit my Reflection</button> 
+               {/* <button class="btn btn-default btn-block my-4" type="submit" id="btn-reflect">Submit my Reflection</button>  */}
                   </div>
                     
            {/* date of learning opportunity second jumbotron start*/}
@@ -96,8 +96,8 @@ function Reflect(props) {
                   {/* text area starts */}
                   <textarea class="form-control form-control-lg mb-3" rows="5"></textarea>
                  
-                  <button type="button" class="btn btn-outline-info btn-lg">Capture Audio</button>
-                  <button type="button" class="btn btn-outline-success btn-lg">Capture Video</button><br/>
+                  <button type="button" class="btn btn-outline-info btn-lg"><i class="fas fa-microphone-alt"></i>   Capture Audio</button>
+                  <button type="button" class="btn btn-outline-success btn-lg"><i class="fas fa-video"></i>  Capture Video</button><br/>
                   <button type="button" class="btn btn-outline-warning btn-lg">Upload Any</button>
                        </div>
                   
@@ -105,7 +105,7 @@ function Reflect(props) {
                  
                    
                    </div>
-                   {/* <button class="btn btn-default btn-block my-4" type="submit">Submit my Reflection</button>  */}
+                   <button class="btn btn-default btn-block my-4" type="submit">Submit my Reflection</button> 
           </div>
         
       </div>
