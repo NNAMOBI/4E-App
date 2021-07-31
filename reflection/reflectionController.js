@@ -54,7 +54,7 @@ exports.createReflectionRecords = async (req, res, next)=> {
               if(err) {
                 console.log("error in saving", err)
               } else{
-                res.status(201).json({message: {msgBody: "your reflections has been documented successfully",msgError: false}})
+                res.status(201).json({message: {msgBody: "Your reflections has been documented successfully",msgError: false}})
               }
               
             })           

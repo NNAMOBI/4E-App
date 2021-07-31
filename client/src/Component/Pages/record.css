@@ -17,7 +17,14 @@ input.text {
     color:#350564;
     line-height: 140%;
     font-weight: 600;
-}
+ }
+/*  
+.my-4 {
+    border: 1px solid red !important;
+    width: 400px !important;
+    position: relative !important;
+    bottom: 80px !important;
+} */ */
 
 .btn-outline-info {
     font-size: 12px;
@@ -29,7 +36,7 @@ input.text {
 }
 
 .btn-outline-info {
-    font-size: 12.5px;
+    font-size: 13px !important;
     line-height: 18px;
     font-weight: 600;
     font-style: normal;
@@ -39,7 +46,7 @@ input.text {
 }
 
 .btn-outline-success {
-    font-size: 13px;
+    font-size: 13px !important;
     line-height: 18px;
     font-weight: 600;
     font-style: normal;
@@ -49,7 +56,7 @@ input.text {
 }
 
 .btn-outline-warning {
-    font-size: 12px;
+    font-size: 13px !important;
     line-height: 18px;
     font-weight: 600;
     font-style: normal;
@@ -60,10 +67,34 @@ input.text {
 }
 
 .form-control-lg {
-    margin-left: 40px;
-    width: fit-content;
+    margin-left: 30px !important;
+    width: 380px !important;
     box-sizing: border-box;
     border-radius: 3px;
-    background-color: #eeeeee;
+    background-color: #eeeeee ;
     border: 1px solid gray;
+    justify-content:left !important;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.app__container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 380px;
+    height: 200px;
+    /* border: none !important; */
+    border: 1px solid gray;
+    box-sizing: border-box;
+    background: #eeeeee !important;
+}
+
+.app__input {
+    margin-top: 10px;
+   
 }

@@ -15,14 +15,41 @@ function Record() {
    const [date, setDate] = useState({date: ""});   // state to handle date picker
    const [message, setMessage] = useState(null);  //message null is not to render the message component
    const [file, setFile]  = useState('');
-  //  const [uploadedFile, setUploadedFile] = useState({});  //what we are sending back from the upload endpoint
+   const [play, setPlay] = useState(false);  //video we are sending back from the upload endpoint
    let history = useHistory(); // call a function that routes
+   navigator.getWebcam = (navigator.getUserMedia || navigator.webKitGetUserMedia || navigator.moxGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
     
+   const HEIGHT = 400;   //VIDEO HEIGHT
+   const WIDTH = 400;    // VIDEO WIDTH
     
    const onChangeHandler=(e)=> {   // handler function to handle change on the file field
      setFile(e.target.files[0])
 
    }
+
+   const startVideo=()=> {
+    setPlay(true)  // set the video to true
+    navigator.getWebcam(   //get the video stream
+      {
+        video: true,
+      },
+    (stream)=> {
+      let video = document.getElementsByClassName('app__videoFeed')[0];  //make a reference to the video stream
+      if(video){                     
+        video.srcObject = stream;       //if video exist, assign the stream(webcam footage) to the source Object
+      }
+    },
+    (err)=> console.error(err.message)   //log error if any error
+
+    )
+   }
+
+
+   const stopVideo=()=> {
+    setPlay(false)   //set the video to false
+    let video = document.getElementsByClassName('app__videoFeed')[0];  //make a reference to the video stream
+      video.srcObject.getTracks()[0].stop();                    
+  }
    
 
     const onSubmit = async(e)=> {   // submit handler to handle form submit
@@ -124,25 +151,49 @@ function Record() {
        
                  {/* Left column jumbotron first ends*/} 
         
-                   <div class="col">
+                   <div class="col" >
                        {/* Right column */}
-                       <div className="jumbotron jumbotron-fluid">
+                       <div className="jumbotron jumbotron-fluid " >
                        <h5 className="display-5 text">Record Your learning Opportunities</h5>
                       <p className="details">(Who, What, Where and When)</p>
                   
                   {/* text area starts */}
-                  <textarea className="form-control form-control-lg mb-3"  value= {content.content} rows="5" 
+                  <textarea className="form-control form-control-lg mb-4"  value= {content.content} rows="5" 
                   onChange={(e)=> setContent(e.target.value)}></textarea>
                  
                   
                   <h5 class="display-5 text">Describe Your learning by Uploading <br/>a photo, audio and video</h5>     
                   {/* text area starts */}
                   
-                  <textarea class="form-control form-control-lg mb-3" rows="5"></textarea>
+                  {/* <textarea class="form-control form-control-lg mb-2" rows="5"> */}
+                  <div className="app">
+                    <div className=" app__container">
+                  <video 
+                         height={HEIGHT}
+                         width={WIDTH} 
+                         muted
+                         autoPlay
+                         className='app__videoFeed'>
+
+                         </video>
+                         <div className="app__input">  
+                           {
+                             play? (
+                             <button onClick={stopVideo}>stop</button> 
+                             ) :
+                             (
+                              <button onClick={startVideo}>start</button> 
+                             )
+                           }
+                         </div>
+                         </div>
+                  </div>
+                    
+                  {/* </textarea> */}
                   
                   
-                  <button type="button" className="btn btn-outline-info btn-lg">Capture Audio</button>
-                  <button type="button" className="btn btn-outline-success btn-lg">Capture Video</button><br/>
+                  <button type="button" className="btn btn-outline-info btn-lg"><i class="fas fa-microphone-alt"></i>  Capture Audio</button>
+                  <button type="button" className="btn btn-outline-success btn-lg"><i class="fas fa-video"></i>   Capture Video</button><br/>
                   <input type= "file" className="center" 
                   style={{marginLeft: "40px", marginTop: "10px", fontFamily: 'sans-serif',
                    fontSize: "14px", backgroundColor: "#350564", color: "white"}} 
@@ -152,7 +203,7 @@ function Record() {
                        
                {/* </div> */}
                  
-              
+               {message ? <Message message={message}/> : null}  
                    </div>
                    
                    <button className="btn btn-default btn-block my-4" type="submit">Submit my Recording</button> 
@@ -161,7 +212,7 @@ function Record() {
          
       </div>
       </form>
-      {message ? <Message message={message}/> : null}  
+      
         </div>
     )
 }
