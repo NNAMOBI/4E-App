@@ -165,8 +165,8 @@ function Record() {
                   <h5 class="display-5 text">Describe Your learning by Uploading <br/>a photo, audio and video</h5>     
                   {/* text area starts */}
                   
-                  {/* <textarea class="form-control form-control-lg mb-2" rows="5"> */}
-                  <div className="app">
+                  <textarea class="form-control form-control-lg mb-2" rows="5">
+                  {/* <div className="app">
                     <div className=" app__container">
                   <video 
                          height={HEIGHT}
@@ -187,9 +187,9 @@ function Record() {
                            }
                          </div>
                          </div>
-                  </div>
+                  </div> */}
                     
-                  {/* </textarea> */}
+                  </textarea>
                   
                   
                   <button type="button" className="btn btn-outline-info btn-lg"><i class="fas fa-microphone-alt"></i>  Capture Audio</button>
