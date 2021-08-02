@@ -60,22 +60,14 @@ require('./startUps/database')  // -8
 const Student = require('./models/Student');
 
 
-// //upload Endpoint
-// app.post('/upload', (req,res)=> {
-//     if(req.files === null){
-//         return res.status(400).json({msg: 'No file upload'})
-//     }
-//     const file = req.files.file;
-//     console.log("file=>", file)
 
-//     file.mv(`${__dirname}/client/public/uploads/${file.name}`, err=>{
-//         if(err){
-//           console.error(err.message)
-//           return res.status(500).send(err);
-//         }
-//         res.json({fileName: file.name, filePath: `/uploads/${file.name}`})
-//     })
-// })
+app.use(express.static(path.join(__dirname, 'build')));
+
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/client/public/index.html'));
+});
+
 
 
 
