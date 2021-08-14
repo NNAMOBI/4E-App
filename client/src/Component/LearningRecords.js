@@ -10,7 +10,7 @@ import Sidebar from  './Sidebar';
 
 
 
-// function to get all the learning records
+// function to get all the learning and reflection records
 function LearningRecords() {
     const[records, setRecords] = useState([]);  // initiate the state using hooks
     const[reflections, setReflections] = useState([]);  // initiate the state using hooks
@@ -20,7 +20,7 @@ function LearningRecords() {
     // a componentDidMount method
     useEffect(()=>{
         const fetchBusinesses=()=> {
-       const token = localStorage.getItem('access_token'); // get the accesstoken in the local storage
+       const token = localStorage.getItem('access_token'); //get the access token in the local storage
        console.log(token)
        if(!token)
        history.push('./');  //back to the home page
@@ -51,7 +51,7 @@ function LearningRecords() {
                         console.log("record=>",record)
                         return <RecordPostcard  key={record._id} record={record} />  //recordings
                     })
-                  }
+                  } 
                 
             </ul>
                        </div>
@@ -62,8 +62,8 @@ function LearningRecords() {
                          <ul className="list-group">          
                      {
                       reflections.map(reflection => {
-                        console.log("record=>",reflection)
-                        return <ReflectPostcard key={reflection._id} reflection={reflection} /> //reflections
+                        console.log("reflect=>",reflection)
+                        return <ReflectPostcard key={reflection._id} reflection={reflection[0]} /> //reflections
                     })
                     }
                  

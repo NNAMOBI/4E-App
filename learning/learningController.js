@@ -26,7 +26,7 @@ const moment = require('moment')
 //api-1
 exports.createRecording = async (req, res, next)=> {    
     try {
-    const {token, content, type, date, filePath, fileName} = req.body      // get the data from the request body
+    const {token, content, type, date, filePath, fileName, time} = req.body      // get the data from the request body
     const decodeToken = await credentials.verifyJwt(token, process.env.SESSION_SECRET)    //sign the jwt
     if(decodeToken === "jwt expired")
     return res.status(400).json({message: {msgBody: "Session expired please Login again"   //if no student log server error
@@ -36,10 +36,11 @@ exports.createRecording = async (req, res, next)=> {
     return res.status(500).json({message: {msgBody: "An error has  occurred"   //if no student log server error
                                    ,msgError: true}})  
       else {
-       const studentLearningRecord = new LearningModel({     // save what students recorded in the db
+       const studentLearningRecord = new LearningModel({     // save what students recorded into the db
                   title:content, 
                   typeOfLearning: type, 
-                  dateOfLearning: moment(date).format('MMMM D Y') //convert the date to string
+                  dateOfLearning: moment(date).format('MMMM D Y'), //convert the date to string
+                  timeOfRecording: time
                 });
 
         studentLearningRecord.student = student; 
@@ -76,16 +77,31 @@ exports.fetchLearningRecords =async(req, res, next)=> {
     return res.status(400).json({message: {msgBody: "Session expired please Login again"   //if no student log server error
                                    ,msgError: true}})  
     // console.log('decoded=>', decodeToken)
-    const studentLearningRecords =  await StudentModel.findById({_id: decodeToken.sub}) //find one student by Id
-                                        .populate('learning')
-     let queryDate = studentLearningRecords.learning.dateOfLearning;
-     console.log("queryDate=>", queryDate);
-    const studentReflectionRecords =  await StudentModel.findOne({
-                                      _id: decodeToken.sub,
-                                      recordingDate: queryDate
-                                     }).populate('reflections')              
-      
-    if(!studentLearningRecords.learning)
+    const studentRecords =  await StudentModel.findById({_id: decodeToken.sub}) //find one student by Id
+    console.log("studentLearningRecords", studentRecords._id)                            
+     const learningRecordArray = [];
+     const reflectionsArray = []
+    const allRecords =  await LearningModel.find({
+                                      student: studentRecords._id
+                                     }).populate('reflections') 
+    console.log("allRecords", allRecords)  
+   await allRecords.map((record) => {
+      learningRecordArray.push({title: record.title,    // push the result of the learning records into a new array
+        dateOfLearning: record.dateOfLearning,
+        timeOfRecording: record.timeOfRecording,
+        typeOfLearning: record.typeOfLearning,
+        resource: record.resource,
+        filePath: record.filePath,
+        _id: record._id
+})
+    reflectionsArray.push({reflections: record.reflections,
+                           _id: record._id})
+    })  
+    
+   
+      console.log("learning record", learningRecordArray)
+      console.log("reflection record", reflectionsArray)
+    if(!allRecords)
     return res.status(500).json({message: {msgBody: "An error has  occurred"   //if no student log server error
                                    ,msgError: true}})  
      else {
@@ -94,8 +110,8 @@ exports.fetchLearningRecords =async(req, res, next)=> {
                            msgBody: "Your learning has been documented successfully",
                            msgError: false, 
                             },
-                    records: studentLearningRecords.learning,
-                    reflections: studentReflectionRecords.reflections
+                    records: learningRecordArray,
+                    reflections: reflectionsArray.map(reflect => reflect.reflections)
                         })
       }
     }catch(err){

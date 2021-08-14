@@ -1,14 +1,15 @@
 // Service repository  to separate the concerns of all reflections for this app
 
 
-
+// interface in javascript that handles all the service calls concerning reflecting cpd
 module.exports = {
-   postMyReflections: (content, date, token)=> {  // sending the recording data to the backend
-     console.log("date=>", date)
+   postMyReflections: (content, date, token, time)=> {  // sending the recording data to the backend
+     console.log("date=>", date, time)
        const userData = {
            content,
            date,
-           token
+           token,
+           time
        }
        return fetch('/api/users/reflection', {
            method: "post",

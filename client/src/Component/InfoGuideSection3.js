@@ -1,5 +1,5 @@
 import React from 'react'
-import recordingImg from './images/record-img.png';
+import recordingImg from './images/webProject3.jpg';
 
 
 

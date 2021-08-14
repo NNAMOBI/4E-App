@@ -19,7 +19,7 @@ const StudentSchema = mongoose.Schema({
     },
     email: {
         type: String,
-        required: true,
+        required: true
         
     },
     password: {
@@ -64,9 +64,13 @@ StudentSchema.methods.comparePassword = function(password, callback){
         if(err)
         return callback(err);
         else {
-            if(!isMatch) //returns null if the password they gave us does not match 
-               return callback(null, isMatch);
-               return callback(null, this); // this will attach the user object to the request object
+            if(!isMatch){
+             //returns null if the password they gave us does not match 
+             return callback(`Your password does not match! Please check your password again`, isMatch);
+            }else {
+                return callback(null, this); // this will attach the user object to the request object
+            } 
+              
     }
     })
 }

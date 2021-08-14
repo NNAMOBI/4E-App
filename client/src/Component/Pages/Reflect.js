@@ -19,16 +19,18 @@ import Message from '../../Component/Message'; //message component to display me
 function Reflect(props) {
   const [content, setContent] = useState({content: ""});  //use state to handle content field
   const [message, setMessage] = useState(null);  //message null is not to render the message component
-  const [date, setDate] = useState({date: ""}); 
+  const [date, setDate] = useState({date: ""}); // state for the date field
+  const [time, setTime] = useState({time: ""}); // state for time field
   let history = useHistory(); // call a function that routes
 
   const onSubmit=(e)=> {
     e.preventDefault();   // prevent the default of the browser
+    console.log("all data=>", content, date, time);
     const token = localStorage.getItem('access_token'); // get the accesstoken in the local storage
     console.log(token)
     if(!token)
     history.push('./');  //back to the home page
-    ReflectingService.postMyReflections(content, date, token).then(data =>{ //api to post content to the backend
+    ReflectingService.postMyReflections(content, date, token, time).then(data =>{ //api to post content to the backend
       console.log(data)
       const {message} = data;  // pull out the message from our server data
       if(!message.msgError){    //if no error from the backend
@@ -71,10 +73,24 @@ function Reflect(props) {
 
           <input type="date" className="text" id="start" value={date.date}
            placeholder= "DAY/ MONTH /YEAR" onChange={(e)=> setDate(e.target.value)}/>
+
+
+             
+                  </div>
+         <br/> 
+             <div className="time-of-learning">
+            <h5 className="display-5 text">Time of recording</h5>
+            {/* <label for="start">Start date:</label> */}
+
+          <input type="time" className="text" id="start" value={time.time}
+           placeholder= "hr/ Min/day" onChange={(e)=> setTime(e.target.value)}/>
+
+
+             
+                  </div>
+                 
              </div> 
                  
-               {/* <button class="btn btn-default btn-block my-4" type="submit" id="btn-reflect">Submit my Reflection</button>  */}
-                  </div>
                     
            {/* date of learning opportunity second jumbotron start*/}
 

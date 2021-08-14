@@ -1,3 +1,5 @@
+// This is the component that handles the admin page only for admin users
+
 import React from 'react'
 import {Link} from 'react-router-dom'  // for routing
 import {
@@ -9,8 +11,7 @@ import {
     CDBSidebarMenu       //  
 }  from 'cdbreact';
 import './sidebar.css'   //css for this component
-// import RecordPostcard from './RecordPostcard';
-// import ReflectPostcard from './ReflectPostCard';
+
 
 
 // components for the admin sidebar
@@ -29,7 +30,7 @@ function Sidebar() {
 
                  <CDBSidebarContent className="sidebar-content" >
                     <CDBSidebarMenu>
-                     <Link to="" activeClassName="activeClicked">
+                     <Link to="/dashboard" activeClassName="activeClicked">
                        <CDBSidebarMenuItem icon="th-large">
                            Dashboard
                        </CDBSidebarMenuItem>

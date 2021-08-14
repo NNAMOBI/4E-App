@@ -1,6 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react'
 import AuthService from '../../Services/AuthService';
-import studyOutside from '../images/studyOutside.png';
+import studyOutside from '../images/dart.jpg';
 import Message from '../../Component/Message';
 import './register.css';
 import {Link} from 'react-router-dom';
@@ -10,6 +10,7 @@ import {Link} from 'react-router-dom';
 function Register(props) {
     const [user, setUser] = useState({username: "", password: "", role: ""});
     const [message, setMessage] = useState(null);
+    const [passwordVisible, setPasswordVisible] = useState(false)
     let timerID = useRef(null);
 
     useEffect(()=> {
@@ -28,6 +29,13 @@ function Register(props) {
      const resetForm =()=> {
         setUser({username: "", password: "", role: ""})
       }
+
+
+    const toggleVisibility =()=> {
+        console.log('i have clicked')
+        setPasswordVisible(!passwordVisible)
+    }
+    
 
      //function to handle submit of the form
      const onSubmit = (e) => {
@@ -75,7 +83,7 @@ function Register(props) {
                  placeholder="name"
                  onChange={onChange}/>
 
-                <input type="text" 
+                <input type="text"
                 className="form-control mb-4" 
                 name="username" 
                 placeholder="username"
@@ -85,8 +93,11 @@ function Register(props) {
                 name="email" 
                 placeholder="email" 
                  onChange={onChange}/>
-                <input type="password" class="form-control mb-4" name="password" placeholder="password" id="signup"
+
+                <input type={(passwordVisible) ?  "text" : "password"} class="form-control mb-4" 
+                name="password" placeholder="password" id="signup"
                  onChange={onChange}/>
+                 <i className="fa fa-eye password-icon" onClick={toggleVisibility}></i>
                 
                 <input type="text" 
                 className="form-control mb-4" 

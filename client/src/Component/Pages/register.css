@@ -29,3 +29,10 @@ h1 {
     background: #ffffff;
     
 }
+
+.fa-eye {
+    /* color: red; */
+    position: relative;
+    bottom: 50px;
+    left: 300px;
+}

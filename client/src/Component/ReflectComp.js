@@ -1,5 +1,5 @@
 import React from 'react'
-import Reflect_cpd from './images/reflect_cpd.png';
+import Reflect_cpd from './images/webProject2.jpg';
 
 
 

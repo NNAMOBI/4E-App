@@ -59,14 +59,23 @@ exports.createStudent = async (req, res, next)=> {
 
 //controller to login student -2
 exports.loginStudent = async (req, res, next)=> {
-    if(req.isAuthenticated()){
-        const {_id, name, username,email,password, role} = req.user; //return the object after comparing password form the auth
-        const token = await credentials.signJwt(_id); //sign the jwt
-        res.cookie('access_token', token,{httpOnly: true, sameSite: true}); //httpOnly prevent against cross-site scripting attack on the client
-                                                                //sameSite prevent against cross site forgery attacks
-    res.status(200).json({isAuthenticated: true,
-                          user: {username, role},
-                          token: token})                                                                     
+    try {
+        if(req.isAuthenticated()){
+            const {_id, name, username,email,password, role} = req.user; //return the object after comparing password form the auth
+            const token = await credentials.signJwt(_id); //sign the jwt
+            res.cookie('access_token', token,{httpOnly: true, sameSite: true}); //httpOnly prevent against cross-site scripting attack on the client
+                                                                    //sameSite prevent against cross site forgery attacks
+        res.status(200).json({isAuthenticated: true,
+                              user: {username, role},
+                              token: token})  
+
+    }else {  
+     console.log("no user")
+    }
+                                                                       
+}catch(err){
+    if(err)
+   console.error(err.message)
 }
 }
 

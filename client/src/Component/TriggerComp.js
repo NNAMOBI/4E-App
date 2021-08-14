@@ -3,7 +3,7 @@ import './triggerComp.css';
 import event_cpd from './images/event_cpd.png';
 import enactment_cpd from './images/Enactment_cpd.png';
 import encounter_cpd from './images/Encounter_cpd.png';
-import experience_cpd from './images/experience_cpd.png';
+import experience_cpd from './images/rguStudent.jpg';
 
 
 

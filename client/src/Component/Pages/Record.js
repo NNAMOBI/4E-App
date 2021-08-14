@@ -13,48 +13,24 @@ function Record() {
    const [content, setContent] = useState({content: ""});  //use state to handle content field
    const [type, setType] = useState("");    //state to handle type of learning field
    const [date, setDate] = useState({date: ""});   // state to handle date picker
+   const [time, setTime] = useState({time: ""});   // state to time picker
    const [message, setMessage] = useState(null);  //message null is not to render the message component
    const [file, setFile]  = useState('');
    const [play, setPlay] = useState(false);  //video we are sending back from the upload endpoint
    let history = useHistory(); // call a function that routes
    navigator.getWebcam = (navigator.getUserMedia || navigator.webKitGetUserMedia || navigator.moxGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
     
-   const HEIGHT = 400;   //VIDEO HEIGHT
-   const WIDTH = 400;    // VIDEO WIDTH
+
     
    const onChangeHandler=(e)=> {   // handler function to handle change on the file field
      setFile(e.target.files[0])
 
    }
 
-   const startVideo=()=> {
-    setPlay(true)  // set the video to true
-    navigator.getWebcam(   //get the video stream
-      {
-        video: true,
-      },
-    (stream)=> {
-      let video = document.getElementsByClassName('app__videoFeed')[0];  //make a reference to the video stream
-      if(video){                     
-        video.srcObject = stream;       //if video exist, assign the stream(webcam footage) to the source Object
-      }
-    },
-    (err)=> console.error(err.message)   //log error if any error
-
-    )
-   }
-
-
-   const stopVideo=()=> {
-    setPlay(false)   //set the video to false
-    let video = document.getElementsByClassName('app__videoFeed')[0];  //make a reference to the video stream
-      video.srcObject.getTracks()[0].stop();                    
-  }
-   
 
     const onSubmit = async(e)=> {   // submit handler to handle form submit
       e.preventDefault();   // prevent the default of the browser
-      console.log("all data=>", content, type, date);
+      console.log("all data=>", content, type, date, time);
       try{
       const token = localStorage.getItem('access_token'); // store the accesstoken in the local storage
       console.log(token)
@@ -66,7 +42,7 @@ function Record() {
       const {fileName, filePath} = res.data;  //Destructuring the data from the server
       console.log("res.data=> ", fileName, filePath)
       // setUploadedFile({fileName, filePath}) // setting the new state
-      RecordService.postRecord(content, type, date, token, fileName, filePath).then(data =>{ //api to login from the backend
+      RecordService.postRecord(content, type, date, token, fileName, filePath, time).then(data =>{ //api to login from the backend
       console.log(data)
       const {message} = data;  // pull out the message from our data
       if(!message.msgError){    //if no error from the backend
@@ -142,10 +118,20 @@ function Record() {
            placeholder= "DAY/ MONTH /YEAR" onChange={(e)=> setDate(e.target.value)}/>
              </div> 
 
-                   </div>
-         {/* <button class="btn btn-default btn-block my-4" type="submit">Submit my Recording</button>  */}
-         
 
+                   </div> 
+         
+                   <div className="jumbotron jumbotron-fluid">
+           <div className="date-of-learning">
+            <h5 className="display-5 text">Time of recording</h5>
+            {/* <label for="start">Start date:</label> */}
+
+          <input type="time" className="text" id="start" value={time.time}
+            onChange={(e)=> setTime(e.target.value)}/>
+             </div> 
+
+
+                   </div>
               {/* Left column jumbotron second ends*/} 
                    </div>    
        
@@ -166,28 +152,7 @@ function Record() {
                   {/* text area starts */}
                   
                   <textarea class="form-control form-control-lg mb-2" rows="5">
-                  {/* <div className="app">
-                    <div className=" app__container">
-                  <video 
-                         height={HEIGHT}
-                         width={WIDTH} 
-                         muted
-                         autoPlay
-                         className='app__videoFeed'>
-
-                         </video>
-                         <div className="app__input">  
-                           {
-                             play? (
-                             <button onClick={stopVideo}>stop</button> 
-                             ) :
-                             (
-                              <button onClick={startVideo}>start</button> 
-                             )
-                           }
-                         </div>
-                         </div>
-                  </div> */}
+                 
                     
                   </textarea>
                   

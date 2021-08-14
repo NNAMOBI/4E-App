@@ -39,7 +39,7 @@ passport.use(new LocalStrategy((username, password, done)=>{
         if(err)
         return done(err);
         //if no user exist
-        if(!student)
+        if(!student) 
         return done(null, false);
         student.comparePassword(password, done);  //check if password is correct
     })

@@ -16,6 +16,7 @@ import InfoGuide from './Component/Pages/InfoGuide';
 import LearningRecords from './Component/LearningRecords';
 import Sidebar from './Component/Sidebar'
 import React from 'react';
+import Dashboard from './Component/Dashboard';
 
 
 
@@ -43,6 +44,7 @@ function App() {
              <Route path="/info-guide" exact strict component={InfoGuide} />
              <Route path="/admin" exact strict component={Sidebar} />
              <Route path="/postcard" exact strict component={LearningRecords} />
+             <Route path="/dashboard" exact strict component={Dashboard} />
          </Switch>    {/*  to switch to the exact route ends here */}
       </>
     

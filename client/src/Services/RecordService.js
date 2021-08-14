@@ -3,14 +3,15 @@ import axios from 'axios'; // library to handle api calls
 
 // interface in javascript that handles all the service calls concerning recording cpd
 const myInterface = {
-   postRecord: (content,type, date,token, fileName, filePath)=> {  // sending the recorded learning data to the backend
+   postRecord: (content,type, date,token, fileName, filePath, time)=> {  // sending the recorded learning data to the backend
        const userData = {
            content,
            type,
            date,
            token,
            fileName,
-           filePath
+           filePath,
+           time
          
        }
        return fetch('/api/users/learning', {

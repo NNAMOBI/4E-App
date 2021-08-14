@@ -25,17 +25,12 @@ function RecordPostcard(props) {
                 <p class="card-subtitle mb-2 center">
                     {props.record.title}    
                 </p>
-                
-                
+                     
                 <Link to="/" onClick={onClickHandler} class="card-link">Resources Used</Link>
                 <Link to="/" class="card-link">{props.record.dateOfLearning}</Link>
                 <Link to="/" class="card-link">Audio</Link>
                 <Link to="/" class="card-link">Video</Link>
-                
-                
-
-    
-           
+                       
             </div>
             
             </div>

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import login_image from '../images/login_image.png';
+import login_image from '../images/webProject4.jpg';
 import './register.css';
 import {Link} from 'react-router-dom'; 
 import AuthService from '../../Services/AuthService';  // service to authenticate the user
@@ -15,6 +15,7 @@ function Login(props) {
    const [user, setUser] = useState({username: "", password: ""});  //initialize the user to empty strings
    const [message, setMessage] = useState(null);  //message null is not to render the message component
    const authContext  = useContext(AuthContext);
+   const [passwordVisible, setPasswordVisible] = useState(false)
 
 //function to handle change on the input
     const onChange = (e)=> {
@@ -22,6 +23,12 @@ function Login(props) {
         
     }
 
+    const toggleVisibility =()=> {
+        console.log('i have clicked')
+        setPasswordVisible(!passwordVisible)
+    }
+    
+    
 
     //function to handle submit of the form
     const onSubmit = (e) => {
@@ -69,20 +76,23 @@ function Login(props) {
                    <p class="details">Kindly enter your credentials to access your account</p>
                {/* </div> */}
                  <form className="text p-5" action="#!" onSubmit={onSubmit}>
-                <input type="text" 
+                <input type= "text" 
                 className="form-control mb-4" 
                 name="username" 
                 placeholder="username" 
                 id="signup" 
                 onChange={onChange}/>
 
-                <input type="password" 
+              {/* <div className="input-group"> */}
+                <input type={(passwordVisible) ?  "text" : "password"}
                 className="form-control mb-4" 
                 name="password" 
                 placeholder="password" 
                 id="signup"
-                 onChange={onChange}/>
-             
+                 onChange={onChange} />
+
+                <i className="fa fa-eye password-icon" onClick={toggleVisibility}></i>
+             {/* </div>   */}
                
                 <button className="btn btn-default btn-block my-4" type="submit" >Submit</button>
               

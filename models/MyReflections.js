@@ -12,9 +12,17 @@ const MyReflectionsSchema = mongoose.Schema({
         type: String,
         allowNull: false
     },
+    timeOfRecording: {
+        type: String,
+        allowNull: false
+    },
     student: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Student'
+    },
+    learning: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Learning'
     }
 },
 {

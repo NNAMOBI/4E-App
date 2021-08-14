@@ -23,9 +23,17 @@ const LearningSchema = mongoose.Schema({
         type: String, 
         allowNull: true
     }],
+    timeOfRecording: {
+        type: String,
+        required: true 
+    },
     filePath: [{
         type: String,
         allowNull: true
+    }],
+    reflections: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'MyReflections'
     }],
     student: {
         type: mongoose.Schema.Types.ObjectId,
