@@ -1,12 +1,19 @@
 //component to fetch the learning records
 import React, {useState, useEffect} from 'react';  //import react libraries
-import {useHistory} from 'react-router-dom'  // library for react routing
-// import RecordItem  from '../Component/RecordItemCom';
-// import ReflectItem from '../Component/ReflectItemCom';
+import {useHistory, Link} from 'react-router-dom'  // library for react routing
 import RecordService from '../Services/RecordService';
 import RecordPostcard from './RecordPostcard';
 import ReflectPostcard from './ReflectPostCard';
-import Sidebar from  './Sidebar';
+import {
+    CDBSidebar,    // for sidebar
+    CDBSidebarContent, // for the content
+    CDBSidebarFooter,   // the footer of the sidebar
+    CDBSidebarHeader,  // the header of the sidebar
+    CDBSidebarMenuItem,  // the menu of the sidebar
+    CDBSidebarMenu       //  
+}  from 'cdbreact';
+import './sidebar.css'   //css for this component
+
 
 
 
@@ -37,7 +44,56 @@ function LearningRecords() {
 
     return (
         <div className="outer-container">
-            <Sidebar />
+           <div className="side-bar">
+    <h4>Your CPD portfolio</h4>
+        <CDBSidebar textColor="#fff" backgroundColor="#350564" className="contain-sidebar">
+        
+              <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
+                 <Link to="/" className="text-decoration-none dash-style">
+                  4E
+                 </Link>
+
+              </CDBSidebarHeader>
+
+                 <CDBSidebarContent className="sidebar-content" >
+                    <CDBSidebarMenu>
+                     <Link to="/dashboard" activeClassName="activeClicked">
+                       <CDBSidebarMenuItem icon="th-large">
+                           Dashboard
+                       </CDBSidebarMenuItem>
+                     </Link>
+                     <Link to="/postcard" activeClassName="activeClicked">
+                       <CDBSidebarMenuItem><i class="fas fa-chalkboard-teacher"></i>
+                       <span style={{marginLeft: "10px"}}>Postcard</span>
+                       </CDBSidebarMenuItem>
+                     </Link>
+                     <Link to=""  activeClassName="activeClicked">
+                       <CDBSidebarMenuItem><i class="fas fa-upload"></i>
+                       <span style={{marginLeft: "10px"}}> Upload</span>
+                       </CDBSidebarMenuItem>
+                     </Link>
+                     <Link to=""  activeClassName="activeClicked">
+                       <CDBSidebarMenuItem><i class="fas fa-cog"></i>
+                         <span style={{marginLeft: "10px"}}>Settings</span>
+                       
+                       </CDBSidebarMenuItem>
+                     </Link>
+
+                    </CDBSidebarMenu>
+
+                </CDBSidebarContent>
+
+                <CDBSidebarFooter className="footer">
+               <div className="footer-style" style={{marginRight: "100px"}}><i class="fas fa-sign-out-alt"></i>
+                  Log Out
+               </div>
+              
+
+                </CDBSidebarFooter>
+         
+     </CDBSidebar>
+     
+     </div>  
 
         <div className="jumbotron jumbotron-fluid" id="parent-jumbotron">
             <div class="container">
@@ -62,7 +118,7 @@ function LearningRecords() {
                          <ul className="list-group">          
                      {
                       reflections.map(reflection => {
-                        console.log("reflect=>",reflection)
+                        console.log("reflect=>",reflection._id)
                         return <ReflectPostcard key={reflection._id} reflection={reflection[0]} /> //reflections
                     })
                     }

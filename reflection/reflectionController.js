@@ -71,3 +71,40 @@ exports.createReflectionRecords = async (req, res, next)=> {
  
 }
   }
+
+
+  exports.fetchReflectionRecords =async(req, res, next)=> {
+    // console.log('req.query=>',req.query);
+    try {
+    const token = req.query.token
+    const decodeToken = await credentials.verifyJwt(token, process.env.SESSION_SECRET)    //sign the jwt
+    if(decodeToken === "jwt expired")
+    return res.status(400).json({message: {msgBody: "Session expired please Login again"   //if no student log server error
+                                   ,msgError: true}})  
+    // console.log('decoded=>', decodeToken)
+    const studentRecords =  await StudentModel.findById({_id: decodeToken.sub}) //find one student by Id
+    console.log("studentLearningRecords", studentRecords._id)                            
+     
+    const allRecords =  await ReflectionModel.find({
+                                      student: studentRecords._id
+                                     })
+    console.log("allRecords", allRecords)  
+  
+    if(!allRecords)
+    return res.status(500).json({message: {msgBody: "An error has  occurred"   //if no student log server error
+                                   ,msgError: true}})  
+     else {
+    res.status(201).json({
+                    message: {
+                           msgBody: "Your learning has been fetched successfully",
+                           msgError: false, 
+                            },
+                    records: allRecords,
+                        })
+      }
+    }catch(err){
+      if(err)
+      console.error(err.message)
+    }
+
+}

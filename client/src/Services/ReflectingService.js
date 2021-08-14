@@ -24,8 +24,8 @@ module.exports = {
            return {message: {msgBody: "UnAuthorized", msgError: true}}
         })
    },
-   getMyReflections: ()=> {
-    return fetch('/api/users/reflection/:id')
+   getMyReflections: (token)=> {
+    return fetch(`/api/users/learning/fetch?token=${token}`)
     .then(res=> {
         if(res.status !== 401)
         return res.json().then(data => data);

@@ -1,15 +1,14 @@
-// component to handle the functionality of the dashboard feature
+//component to handle the reflections datatable on dashboard for the user
 
 import React, {useState, useEffect} from 'react' // importing react from react website
-import DataTable from './DataTable';  // importing datatable component
+import ReflectionDataTable from '../../Component/ReflectionDataTable';  // importing datatable component
 import {Link} from 'react-router-dom'; 
 import {useHistory} from 'react-router-dom'  // library for react routing
-import RecordService from '../Services/RecordService'; // service that handles the API calls to the server
+import ReflectService from '../../Services/ReflectingService'; // service that handles the API calls to the server
 
 
 
-// function to handle the dashboard state ( recordings from the dashboard) using hooks
-function Dashboard() {
+function ReflectionDashboard() {
     const [getData, setData] = useState([]);
     const [filter, setFilter] = useState('');
     let history = useHistory(); // call a function that routes
@@ -28,9 +27,9 @@ function Dashboard() {
        console.log(token)
        if(!token)
        history.push('./');  //back to the home page
-        RecordService.getLearningRecords(token).then(data=> {
-            console.log("records=>",data.records)
-        setData(data.records)
+       ReflectService.getMyReflections(token).then(data=> {
+            console.log("reflections=>",data.reflections)
+        setData(data.reflections)
         
         })
           }
@@ -38,13 +37,7 @@ function Dashboard() {
            //eslint-disable-next-line react-hooks/exhaustive-deps  
     },[])
 
-// code by Searching/filtering a dataTable in [react] (react hooks api, react datatables, JavaScript fetch API), 2020. [online]. Youtube. Available from: https://www.youtube.com/watch?v=d1r0aK5awWk [Accessed 14 Aug 2021].
-    const searchTable =(rows)=> {  // to search the data table for matching rows with the letters in the input field that returns 1 if successful and -1 when unsucessful
-          return rows.filter((row) => 
-          row.dateOfLearning.toLowerCase().indexOf(filter)> -1 ||
-          row.typeOfLearning.toLowerCase().indexOf(filter)> -1 ||
-          row.title.toLowerCase().indexOf(filter)> -1) 
-    }
+
 //code  by Searching/filtering a dataTable in [react] (react hooks api, react datatables, JavaScript fetch API), 2020. [online]. Youtube. Available from: https://www.youtube.com/watch?v=d1r0aK5awWk [Accessed 14 Aug 2021]
 //stops here
     return (
@@ -52,9 +45,9 @@ function Dashboard() {
 
         <div className="container">
         <nav class="navbar navbar-expand-md navbar-light">
-       <div>
-       <Link class="navbar-brand" to="/admin" id="logo">4E</Link>
-       </div>
+       
+       <Link class="navbar-brand" to="/" id="logo">4E</Link>
+       
        </nav>
           <input type= "text" 
                 className="form-control mb-4" 
@@ -64,15 +57,20 @@ function Dashboard() {
                 onChange={onChange}/>
         </div>
         <div>
-               
-            <DataTable  key={getData._id} data={searchTable(getData)}/>  
+        {
+                    getData.map(data => {
+                        
+                        return <ReflectionDataTable key={data._id}  data={data}/>    //recordings
+                    })
+                  } 
           
         </div>
          {/*  OTTO, M., THORNTON, J. and BOOTSTRAP CONTRIBUTORS, 2021b. Stretched link. [online]. Getbootstrap.com. Available from: https://getbootstrap.com/docs/5.0/helpers/stretched-link/ [Accessed 14 Aug 2021].*/}
-        {/* <a href="/reflections-dashboard" className="stretched-link text">See your Reflections</a>   */}
+        <Link to="/dashboard" className="stretched-link text">See your Recordings</Link>  
            {/* ends here */} 
         </>
     )
 }
 
-export default Dashboard
+
+export default ReflectionDashboard;

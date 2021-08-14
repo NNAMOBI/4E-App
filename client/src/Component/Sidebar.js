@@ -11,16 +11,18 @@ import {
     CDBSidebarMenu       //  
 }  from 'cdbreact';
 import './sidebar.css'   //css for this component
+import PortfolioComponent from "./PortfolioComponent";
 
 
 
 // components for the admin sidebar
 function Sidebar() {
     return (
-       
+      <div className="outer-container">
     <div className="side-bar">
-       
+    <h4>Your CPD portfolio</h4>
         <CDBSidebar textColor="#fff" backgroundColor="#350564" className="contain-sidebar">
+        
               <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
                  <Link to="/" className="text-decoration-none dash-style">
                   4E
@@ -66,9 +68,13 @@ function Sidebar() {
          
      </CDBSidebar>
      
-        </div>
+     </div>  
+     <PortfolioComponent />
+    
+          
+{/* outside contianer div*/}
+        </div>     
 
-            
        
     )
 }
