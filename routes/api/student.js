@@ -7,7 +7,6 @@ const passport = require('passport')
 
 
 
-// router.get('/', userController.createUser);
 
 
 //student Endpoint
@@ -18,7 +17,7 @@ router.get('/logout', passport.authenticate('jwt',{session: false}), studentCont
 
 //admin route 
 router.get('/admin', passport.authenticate('jwt',{session: false}), studentController.authenticateAdmin)//route to check for admin or user role
-router.get('/auth', passport.authenticate('jwt',{session: false}), studentController.keepAlive)
+router.get('/auth', passport.authenticate('jwt',{session: false}), studentController.keepAlive)// route to keep the connection alive between the client and server
 
 
 
