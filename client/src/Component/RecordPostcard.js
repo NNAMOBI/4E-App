@@ -19,6 +19,7 @@ function RecordPostcard(props) {
 
     return (
         <div>
+             {/*gotten from bootstrap framework OTTO, M., THORNTON, J. and BOOTSTRAP CONTRIBUTORS, 2021a. Introduction. [online]. Getbootstrap.com. Available from: https://getbootstrap.com/docs/5.1/getting-started/introduction*/}
         <div className="card border-shadow mb-3">
              <div className="card-header">{props.record.typeOfLearning}</div>
             <div className="card-body">
@@ -32,7 +33,7 @@ function RecordPostcard(props) {
                 <Link to="/" class="card-link">Video</Link>
                        
             </div>
-            
+     {/*gotten from bootstrap framework OTTO, M., THORNTON, J. and BOOTSTRAP CONTRIBUTORS, 2021a. Introduction. [online]. Getbootstrap.com. Available from: https://getbootstrap.com/docs/5.1/getting-started/introduction*/}        
             </div>
                   
            

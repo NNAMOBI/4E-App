@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react';  // import from react
 import './contentFirstLayer.css';
 import ReflectComp from './ReflectComp';
 import TriggerComp from './TriggerComp';

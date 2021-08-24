@@ -9,6 +9,7 @@
 
 /*
  * MVC - Controller to handle the Creation of reflection records /api-1
+* MVC - Controller to handle fetching all reflection records /api-2
  * @param req
  * @param res
  * @param next
@@ -16,13 +17,13 @@
  */
 
 
-const JWT = require('jsonwebtoken');   //jwt for sessions
+const JWT = require('jsonwebtoken');   //jwt for sessions https://www.npmjs.com/package/jsonwebtoken [Accessed 24 Aug 2021].
 const credentials = require('../Util/helper');   // call a function to verify the token  
 const StudentModel = require('../models/Student');  // importing student model/ table
 const LearningModel = require('../models/Learning')  // importing learning model/ table
 const ReflectionModel = require('../models/MyReflections')  // importing myReflections model/ table
-const moment = require('moment')
-
+const moment = require('moment')  // library used for date manipulation https://www.npmjs.com/package/moment [Accessed 24 Aug 2021].
+ 
 
 //api-1
 exports.createReflectionRecords = async (req, res, next)=> {    
@@ -72,31 +73,28 @@ exports.createReflectionRecords = async (req, res, next)=> {
 }
   }
 
-
-  exports.fetchReflectionRecords =async(req, res, next)=> {
-    // console.log('req.query=>',req.query);
+  //api-2
+  exports.fetchReflectionRecords =async(req, res, next)=> {  
     try {
-    const token = req.query.token
+    const token = req.query.token   // receive token from the request object
     const decodeToken = await credentials.verifyJwt(token, process.env.SESSION_SECRET)    //sign the jwt
     if(decodeToken === "jwt expired")
     return res.status(400).json({message: {msgBody: "Session expired please Login again"   //if no student log server error
                                    ,msgError: true}})  
-    // console.log('decoded=>', decodeToken)
     const studentRecords =  await StudentModel.findById({_id: decodeToken.sub}) //find one student by Id
-    console.log("studentLearningRecords", studentRecords._id)                            
+                          
      
     const allRecords =  await ReflectionModel.find({
                                       student: studentRecords._id
                                      })
-    console.log("allRecords", allRecords)  
   
-    if(!allRecords)
+    if(!allRecords)   // if no records
     return res.status(500).json({message: {msgBody: "An error has  occurred"   //if no student log server error
                                    ,msgError: true}})  
      else {
     res.status(201).json({
                     message: {
-                           msgBody: "Your learning has been fetched successfully",
+                           msgBody: "Your learning has been fetched successfully", // send a status code error back to the client
                            msgError: false, 
                             },
                     records: allRecords,
@@ -104,7 +102,7 @@ exports.createReflectionRecords = async (req, res, next)=> {
       }
     }catch(err){
       if(err)
-      console.error(err.message)
+      console.error(err.message)  // catch the error
     }
 
 }

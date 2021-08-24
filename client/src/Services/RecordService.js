@@ -14,7 +14,7 @@ const myInterface = {
            time
          
        }
-       return fetch('/api/users/learning', {
+       return fetch('/api/users/learning', { 
            method: "post",
            body: JSON.stringify(userData),
            headers: {

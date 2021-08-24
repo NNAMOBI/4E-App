@@ -1,8 +1,10 @@
+// parent component
+
 
 import './App.css';
 import {Route, Switch} from 'react-router-dom' // Route defines different paths in the URL we want to listen to
 // import NavBar from './Component/NavBar';
-import NavigationComponent from './Component/NavigationComponent';
+import NavigationComponent from './Component/NavigationComponent'; //import components
 import ContentFirstLayer from './Component/ContentFirstLayer';
 import JumbotronSectComp from './Component/JumbotronSectComp';
 // import CenteredGrid from './Component/CenteredGrid';
@@ -54,4 +56,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;  // export the ap

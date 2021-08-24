@@ -1,10 +1,10 @@
-//audio and video uploads model 
+//audio and video uploads model , this model is for the future
 
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const mongoose = require('mongoose');  //mongoose library  gotten from npm: mongoose, 2021. [online]. Npmjs.com. Available from: https://www.npmjs.com/package/mongoose [Accessed 24 Aug 2021].
+const bcrypt = require('bcrypt');  //library to hash password of the user npm: bcrypt, 2021. [online]. Npmjs.com. Available from: https://www.npmjs.com/package/bcrypt [Accessed 24 Aug 2021].
 
 
-
+// media schema
 const MediaSchema = mongoose.Schema({
     
     uploadType: {
@@ -29,5 +29,4 @@ const MediaSchema = mongoose.Schema({
 
 
 
-// schema.plugin(mongoosePaginate);
-module.exports =  mongoose.model("Media", MediaSchema);
+module.exports =  mongoose.model("Media", MediaSchema);  // export the model

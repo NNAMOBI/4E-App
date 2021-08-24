@@ -13,7 +13,7 @@ function JumbotronSectComp() {
            <div class="container">
            <div class="row">
                    <div class="col">
-
+ {/*  OTTO, M., THORNTON, J. and BOOTSTRAP CONTRIBUTORS, 2021b. Stretched link. [online]. Getbootstrap.com. Available from: https://getbootstrap.com/docs/5.0/helpers/stretched-link/ [Accessed 14 Aug 2021].*/}
      <div class="design-logo">
      <img src={designLogo}  class="card-img-top"  alt="cpd-model" />
      </div>

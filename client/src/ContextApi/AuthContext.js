@@ -1,11 +1,11 @@
-import React, {createContext, useState, useEffect} from 'react';
-import AuthService from '../Services/AuthService';
+import React, {createContext, useState, useEffect} from 'react';  //react library
+import AuthService from '../Services/AuthService';  // import from authservice
 
 //create the context
 export const AuthContext = createContext();  //AuthContext makes the provider and consumer available
 
 
-
+//code from MERN stack part 5 : Using the React Context API and creating an AuthService, 2020. [online]. Youtube. Available from: https://www.youtube.com/watch?v=uWVx6Jt4Rqw
 const AuthProvider =({children})=>{  //children is the consumer component
 
     const [user, setUser] = useState(null);  //user is the student that is logged-in/ setUser is to update the state

@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react' // import from react
 import './contactUsForm.css'; 
 
 
 
 function ContactUsForm() {
     return (
-       
+        //gotten from bootstrap framework OTTO, M., THORNTON, J. and BOOTSTRAP CONTRIBUTORS, 2021a. Introduction. [online]. Getbootstrap.com. Available from: https://getbootstrap.com/docs/5.1/getting-started/introduction
         <div class="container">
     <div class="row justify-content-center mt-7">
         <div class="col-md-7">
@@ -33,7 +33,7 @@ function ContactUsForm() {
              
                
                 <button class="btn btn-default btn-block my-4" type="submit">Send Messsage</button>
-              
+            {/*gotten from bootstrap framework OTTO, M., THORNTON, J. and BOOTSTRAP CONTRIBUTORS, 2021a. Introduction. [online]. Getbootstrap.com. Available from: https://getbootstrap.com/docs/5.1/getting-started/introduction*/}
                 {/* <p>Not a member?
                     <a href="/">Send Messsage</a>
                 </p> */}

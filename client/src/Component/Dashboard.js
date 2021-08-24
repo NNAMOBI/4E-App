@@ -2,7 +2,7 @@
 
 import React, {useState, useEffect} from 'react' // importing react from react website
 import DataTable from './DataTable';  // importing datatable component
-import {Link} from 'react-router-dom'; 
+import {Link} from 'react-router-dom'; // react library for link
 import {useHistory} from 'react-router-dom'  // library for react routing
 import RecordService from '../Services/RecordService'; // service that handles the API calls to the server
 
@@ -34,8 +34,8 @@ function Dashboard() {
         
         })
           }
-          fetchBusinesses()  
-           //eslint-disable-next-line react-hooks/exhaustive-deps  
+          fetchBusinesses()  // code from How to fix missing dependency warning when using useEffect React Hook, 2021. [online]. Stackoverflow.com. Available from: https://stackoverflow.com/questions/55840294/how-to-fix-missing-dependency-warning-when-using-useeffect-react-hook
+           //eslint-disable-next-line react-hooks/exhaustive-deps    // gotten How to fix missing dependency warning when using useEffect React Hook, 2021. [online]. Stackoverflow.com. Available from: https://stackoverflow.com/questions/55840294/how-to-fix-missing-dependency-warning-when-using-useeffect-react-hook
     },[])
 
 // code by Searching/filtering a dataTable in [react] (react hooks api, react datatables, JavaScript fetch API), 2020. [online]. Youtube. Available from: https://www.youtube.com/watch?v=d1r0aK5awWk [Accessed 14 Aug 2021].
@@ -49,7 +49,7 @@ function Dashboard() {
 //stops here
     return (
         <>
-
+  {/*  OTTO, M., THORNTON, J. and BOOTSTRAP CONTRIBUTORS, 2021b. Stretched link. [online]. Getbootstrap.com. Available from: https://getbootstrap.com/docs/5.0/helpers/stretched-link/ [Accessed 14 Aug 2021].*/}
         <div className="container">
         <nav class="navbar navbar-expand-md navbar-light">
        <div>

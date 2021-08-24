@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'; // to use the provider and consumer 
-import {useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom' // impor from react
 import './NavBar.css';
 import { Link } from 'react-router-dom'  // react library to handle the page navigation
 import AuthService from '../Services/AuthService';  // our interface to all the CRUD operations
@@ -28,6 +28,7 @@ import { AuthContext } from '../ContextApi/AuthContext'; // framework for provid
     const noAuthenticatedNavbar =()=> {
      return (
           <>
+           {/*gotten from bootstrap framework OTTO, M., THORNTON, J. and BOOTSTRAP CONTRIBUTORS, 2021a. Introduction. [online]. Getbootstrap.com. Available from: https://getbootstrap.com/docs/5.1/getting-started/introduction*/}
           <li id="menu-item-42" className="nav-item  menu-item-42">
              <Link to="/register"> 
                  <button className="btn btn-default" type="submit">Register</button>
@@ -93,7 +94,7 @@ import { AuthContext } from '../ContextApi/AuthContext'; // framework for provid
           <button className="btn btn-default" type="button" onClick={logoutHandler}>Logout</button>
              {/* </Link>  */}
         {/* </li> */}
-
+ {/*gotten from bootstrap framework OTTO, M., THORNTON, J. and BOOTSTRAP CONTRIBUTORS, 2021a. Introduction. [online]. Getbootstrap.com. Available from: https://getbootstrap.com/docs/5.1/getting-started/introduction*/}
           </>
           )
 
@@ -103,6 +104,7 @@ import { AuthContext } from '../ContextApi/AuthContext'; // framework for provid
 
     return (
         <>
+         {/*gotten from bootstrap framework OTTO, M., THORNTON, J. and BOOTSTRAP CONTRIBUTORS, 2021a. Introduction. [online]. Getbootstrap.com. Available from: https://getbootstrap.com/docs/5.1/getting-started/introduction*/}
            <nav className="navbar navbar-expand-md navbar-light">
  <div className="container">
  <Link className="navbar-brand" to="/" id="logo">4E</Link>
@@ -115,7 +117,7 @@ import { AuthContext } from '../ContextApi/AuthContext'; // framework for provid
         {!isAuthenticated? noAuthenticatedNavbar(): authenticatedNavComp()}
         
        </ul>
- 
+  {/*gotten from bootstrap framework OTTO, M., THORNTON, J. and BOOTSTRAP CONTRIBUTORS, 2021a. Introduction. [online]. Getbootstrap.com. Available from: https://getbootstrap.com/docs/5.1/getting-started/introduction*/}
  </div>
  </div>
 </nav>

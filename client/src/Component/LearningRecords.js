@@ -5,13 +5,13 @@ import RecordService from '../Services/RecordService';
 import RecordPostcard from './RecordPostcard';
 import ReflectPostcard from './ReflectPostCard';
 import {
-    CDBSidebar,    // for sidebar
-    CDBSidebarContent, // for the content
+    CDBSidebar,    // library for sidebar  gotten from npm: cdbreact, 2021. [online]. Npmjs.com. Available from: https://www.npmjs.com/package/cdbreact
+    CDBSidebarContent, // library for the content gotten from npm: cdbreact, 2021. [online]. Npmjs.com. Available from: https://www.npmjs.com/package/cdbreact
     CDBSidebarFooter,   // the footer of the sidebar
     CDBSidebarHeader,  // the header of the sidebar
     CDBSidebarMenuItem,  // the menu of the sidebar
     CDBSidebarMenu       //  
-}  from 'cdbreact';
+}  from 'cdbreact'; // npm: cdbreact, 2021. [online]. Npmjs.com. Available from: https://www.npmjs.com/package/cdbreact
 import './sidebar.css'   //css for this component
 
 
@@ -37,12 +37,14 @@ function LearningRecords() {
         setReflections(data.reflections)
         })
           }
-          fetchBusinesses()  
-           //eslint-disable-next-line react-hooks/exhaustive-deps  
+          fetchBusinesses()  // code from How to fix missing dependency warning when using useEffect React Hook, 2021. [online]. Stackoverflow.com. Available from: https://stackoverflow.com/questions/55840294/how-to-fix-missing-dependency-warning-when-using-useeffect-react-hook
+          //eslint-disable-next-line react-hooks/exhaustive-deps    // gotten How to fix missing dependency warning when using useEffect React Hook, 2021. [online]. Stackoverflow.com. Available from: https://stackoverflow.com/questions/55840294/how-to-fix-missing-dependency-warning-when-using-useeffect-react-hook
+            
     },[])
 
 
     return (
+      //code from Sidebar Component for react bootstrap, 2021. [online]. Devwares.com. Available from: https://www.devwares.com/docs/contrast/react/navigation/sidebar
         <div className="outer-container">
            <div className="side-bar">
     <h4>Your CPD portfolio</h4>
@@ -92,7 +94,7 @@ function LearningRecords() {
                 </CDBSidebarFooter>
          
      </CDBSidebar>
-     
+     {/*code from Sidebar Component for react bootstrap, 2021. [online]. Devwares.com. Available from: https://www.devwares.com/docs/contrast/react/navigation/sidebar */}
      </div>  
 
         <div className="jumbotron jumbotron-fluid" id="parent-jumbotron">

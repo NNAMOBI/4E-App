@@ -7,6 +7,7 @@ function Footer() {
     return (
        
             <div>
+               {/*gotten from bootstrap framework OTTO, M., THORNTON, J. and BOOTSTRAP CONTRIBUTORS, 2021a. Introduction. [online]. Getbootstrap.com. Available from: https://getbootstrap.com/docs/5.1/getting-started/introduction*/}
           <footer class="page-footer font-small indigo">
 
           <div class="container text-left">
@@ -88,7 +89,7 @@ function Footer() {
 
         </div>
           </footer>
-   
+    {/*gotten from bootstrap framework OTTO, M., THORNTON, J. and BOOTSTRAP CONTRIBUTORS, 2021a. Introduction. [online]. Getbootstrap.com. Available from: https://getbootstrap.com/docs/5.1/getting-started/introduction*/}
             </div>
             
        

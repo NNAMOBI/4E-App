@@ -2,6 +2,7 @@
 import React from 'react'
 
 // error message handler
+//code from MERN stack part 8: Creating our Todo component and Todo service, 2020. [online]. Youtube. Available from: https://www.youtube.com/watch?v=NN310xEV1G8
 const getMessageStyle =(props)=> {
   let baseClass = "alert";
   if(props.message.msgError)
@@ -20,5 +21,5 @@ const Message = (props) => {
         </div>
     )
 }
-
+//MERN stack part 8: Creating our Todo component and Todo service, 2020. [online]. Youtube. Available from: https://www.youtube.com/watch?v=NN310xEV1G8
 export default Message

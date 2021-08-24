@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');  //mongoose library
+// Model for learning
+const mongoose = require('mongoose');  //mongoose library  gotten from npm: mongoose, 2021. [online]. Npmjs.com. Available from: https://www.npmjs.com/package/mongoose [Accessed 24 Aug 2021].
 
 
 
@@ -45,5 +46,5 @@ const LearningSchema = mongoose.Schema({
 });
 
 
-// schema.plugin(mongoosePaginate);
-module.exports =  mongoose.model("Learning", LearningSchema);
+
+module.exports =  mongoose.model("Learning", LearningSchema);  // export the model

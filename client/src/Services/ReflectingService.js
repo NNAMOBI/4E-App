@@ -24,8 +24,8 @@ module.exports = {
            return {message: {msgBody: "UnAuthorized", msgError: true}}
         })
    },
-   getMyReflections: (token)=> {
-    return fetch(`/api/users/learning/fetch?token=${token}`)
+   getMyReflections: (token)=> { // api service to make http request to the server to get all the reflection from users
+    return fetch(`/api/users/learning/fetch?token=${token}`)  // token in the request body
     .then(res=> {
         if(res.status !== 401)
         return res.json().then(data => data);

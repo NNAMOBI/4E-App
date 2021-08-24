@@ -1,8 +1,8 @@
+// Model for contactus //this model was not used in this project
+const mongoose = require('mongoose');  //mongoose library  gotten from npm: mongoose, 2021. [online]. Npmjs.com. Available from: https://www.npmjs.com/package/mongoose [Accessed 24 Aug 2021].
 
-const mongoose = require('mongoose');  //mongoose library
 
-
-//schema for learning table
+//schema for contact us table/ model
 const ContactSchema = mongoose.Schema({
     
     name: {
@@ -28,5 +28,5 @@ const ContactSchema = mongoose.Schema({
 
    
 });
-// schema.plugin(mongoosePaginate);
-module.exports =  mongoose.model("Learning", ContactSchema);
+
+module.exports =  mongoose.model("Learning", ContactSchema);  // export the model

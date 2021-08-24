@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react'  // import react library
+
+// import all images
 import BigCrit from './images/BigCrit.jpg';
 import dart from './images/dart.jpg';
 import rguDegreeLink from './images/rguDegreeLink.jpg';
@@ -13,6 +15,7 @@ import rguMasterClass from './images/rguMasterClass.jpg';
 
 function CarouselDesignComp() {
     return (
+      //gotten from bootstrap framework OTTO, M., THORNTON, J. and BOOTSTRAP CONTRIBUTORS, 2021a. Introduction. [online]. Getbootstrap.com. Available from: https://getbootstrap.com/docs/5.1/getting-started/introduction
         <div>
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">

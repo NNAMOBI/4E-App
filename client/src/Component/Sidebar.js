@@ -2,6 +2,8 @@
 
 import React from 'react'
 import {Link} from 'react-router-dom'  // for routing
+
+//npm: cdbreact, 2021. [online]. Npmjs.com. Available from: https://www.npmjs.com/package/cdbreact
 import {
     CDBSidebar,    // for sidebar
     CDBSidebarContent, // for the content
@@ -10,6 +12,8 @@ import {
     CDBSidebarMenuItem,  // the menu of the sidebar
     CDBSidebarMenu       //  
 }  from 'cdbreact';
+
+//npm: cdbreact, 2021. [online]. Npmjs.com. Available from: https://www.npmjs.com/package/cdbreact
 import './sidebar.css'   //css for this component
 import PortfolioComponent from "./PortfolioComponent";
 

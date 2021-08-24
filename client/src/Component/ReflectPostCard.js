@@ -7,7 +7,9 @@ import {Link} from 'react-router-dom'
 
 // reflect postcard
 function ReflectPostCard(props) {
+    //*gotten from bootstrap framework OTTO, M., THORNTON, J. and BOOTSTRAP CONTRIBUTORS, 2021a. Introduction. [online]. Getbootstrap.com. Available from: https://getbootstrap.com/docs/5.1/getting-started/introduction*//
     return (
+         
         <div className="card border-shadow mb-3">
             <div className="card-header header2"><i className="fas fa-user-edit"></i></div>
             <div className="card-body">

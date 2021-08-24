@@ -1,7 +1,7 @@
 //Student model 
 
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const mongoose = require('mongoose'); //mongoose library  gotten from npm: mongoose, 2021. [online]. Npmjs.com. Available from: https://www.npmjs.com/package/mongoose [Accessed 24 Aug 2021].
+const bcrypt = require('bcrypt');   //library to hash password of the user npm: bcrypt, 2021. [online]. Npmjs.com. Available from: https://www.npmjs.com/package/bcrypt [Accessed 24 Aug 2021].
 
 
 
@@ -30,7 +30,7 @@ const StudentSchema = mongoose.Schema({
           type: String,
           enum: ['user', 'admin'],
           required: true
-    },
+    }, 
     learning: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Learning'
@@ -48,7 +48,7 @@ const StudentSchema = mongoose.Schema({
 });
 
 //function to hash passwords
-StudentSchema.pre('save', function(next){
+StudentSchema.pre('save', function(next){  // gotten from MERN Stack Part 3 : Configuring PassportJS JWT and Local Strategys, 2020. [online]. Youtube. Available from: https://www.youtube.com/watch?v=FlZVFnErMU4
     if(!this.isModified('password'))
     return next();
     bcrypt.hash(this.password, 10, (err, passwordHash)=> {  //hash the password
@@ -59,7 +59,8 @@ StudentSchema.pre('save', function(next){
     })
 })
 
-StudentSchema.methods.comparePassword = function(password, callback){
+// function to compare password from the client with the password save in the db
+StudentSchema.methods.comparePassword = function(password, callback){  // gotten from MERN Stack Part 3 : Configuring PassportJS JWT and Local Strategys, 2020. [online]. Youtube. Available from: https://www.youtube.com/watch?v=FlZVFnErMU4
     bcrypt.compare(password, this.password, (err, isMatch)=> {
         if(err)
         return callback(err);
@@ -75,5 +76,4 @@ StudentSchema.methods.comparePassword = function(password, callback){
     })
 }
 
-// schema.plugin(mongoosePaginate);
-module.exports =  mongoose.model("Student", StudentSchema);
+module.exports =  mongoose.model("Student", StudentSchema); // export the schema

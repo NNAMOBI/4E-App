@@ -16,9 +16,9 @@
  * @returns {Promise<void>}
  */
 
-const Student = require('../models/Student');
-const JWT = require('jsonwebtoken');
-const passportConfig = require('../Middleware/auth');
+const Student = require('../models/Student');  //import the student model
+const JWT = require('jsonwebtoken');  // library for jwt 
+const passportConfig = require('../Middleware/auth');  //import the middleware for authentication
 const credentials = require('../Util/helper');
 
 
@@ -28,7 +28,7 @@ const credentials = require('../Util/helper');
 //controller to create student
 exports.createStudent = async (req, res, next)=> {    
    try {
-    const {name, username, email, password, role} = req.body;
+    const {name, username, email, password, role} = req.body; // select the form data from the request object
     await Student.findOne({email}, async (err, student)=> {
        if(err)
       return res.status(500).json({message: {msgBody: "An error has  occurred"

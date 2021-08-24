@@ -1,7 +1,7 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles'; //library from @material-ui/styles, 2021. [online]. Material-ui.com. Available from: https://material-ui.com/styles/basics/
+import Paper from '@material-ui/core/Paper';  //library from @material-ui/paper, 2021. [online]. Material-ui.com. Available from: https://material-ui.com/styles/basics/
+import Grid from '@material-ui/core/Grid';    //library from @material-ui/grid, 2021. [online]. Material-ui.com. Available from: https://material-ui.com/styles/basics/
 import NavigationComponent from './NavigationComponent';
 
 const useStyles = makeStyles((theme) => ({
@@ -19,6 +19,7 @@ export default function CenteredGrid() {
   const classes = useStyles();
 
   return (
+    //gotten from bootstrap framework OTTO, M., THORNTON, J. and BOOTSTRAP CONTRIBUTORS, 2021a. Introduction. [online]. Getbootstrap.com. Available from: https://getbootstrap.com/docs/5.1/getting-started/introduction
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={12}>

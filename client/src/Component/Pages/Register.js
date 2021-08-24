@@ -52,7 +52,7 @@ function Register(props) {
         })
     }
 
-    return (
+    return (   {/*  OTTO, M., THORNTON, J. and BOOTSTRAP CONTRIBUTORS, 2021b. Stretched link. [online]. Getbootstrap.com. Available from: https://getbootstrap.com/docs/5.0/helpers/stretched-link/ [Accessed 14 Aug 2021].*/}
         <>
         <div className="container">
         <nav className="navbar navbar-expand-md navbar-light">
@@ -122,6 +122,6 @@ function Register(props) {
             
          </>
     )
-}
+}   {/*  OTTO, M., THORNTON, J. and BOOTSTRAP CONTRIBUTORS, 2021b. Stretched link. [online]. Getbootstrap.com. Available from: https://getbootstrap.com/docs/5.0/helpers/stretched-link/ [Accessed 14 Aug 2021].*/}
 
 export default Register

@@ -6,8 +6,9 @@ import './questionSection.css';
 
 
 function InfoGuideQuestionSection() {
+   //*  OTTO, M., THORNTON, J. and BOOTSTRAP CONTRIBUTORS, 2021b. Stretched link. [online]. Getbootstrap.com. Available from: https://getbootstrap.com/docs/5.0/helpers/stretched-link/ [Accessed 14 Aug 2021].*//
     return (
-        
+         
             <div class="container">
                 
             <div class="row" id="horizontal">

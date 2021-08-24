@@ -18,7 +18,7 @@ function Record() {
    const [file, setFile]  = useState('');
    const [play, setPlay] = useState(false);  //video we are sending back from the upload endpoint
    let history = useHistory(); // call a function that routes
-   navigator.getWebcam = (navigator.getUserMedia || navigator.webKitGetUserMedia || navigator.moxGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+  
     
 
     

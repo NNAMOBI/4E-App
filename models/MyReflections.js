@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+// Model for reflection
+const mongoose = require('mongoose'); //mongoose library  gotten from npm: mongoose, 2021. [online]. Npmjs.com. Available from: https://www.npmjs.com/package/mongoose [Accessed 24 Aug 2021].
 
 
 
@@ -32,5 +33,5 @@ const MyReflectionsSchema = mongoose.Schema({
 
 
    
-// schema.plugin(mongoosePaginate);
-module.exports =  mongoose.model("MyReflections", MyReflectionsSchema);
+
+module.exports =  mongoose.model("MyReflections", MyReflectionsSchema); // export the learning model
